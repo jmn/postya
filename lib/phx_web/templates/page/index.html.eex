@@ -1,0 +1,6 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcomen to %{name}!", name: "Phoenix" %></h1>
+  <p>A productive web framework that<br/>does not compromise speed or maintainability.</p>
+  <p>Lorem jibberish jabberish</p>
+</section>
+
