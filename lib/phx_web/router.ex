@@ -20,6 +20,11 @@ defmodule PhxWeb.Router do
     live "/", CounterLive, session: [:user_id]
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
+    # resources "/users", UserController
+    live "/users", UserLive.Index
+    live "/users/new", UserLive.New
+    live "/users/:id", UserLive.Show
+    live "/users/:id/edit", UserLive.Edit
   end
 
   # Other scopes may use custom stacks.

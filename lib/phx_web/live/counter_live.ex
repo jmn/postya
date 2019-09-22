@@ -17,7 +17,6 @@ defmodule PhxWeb.CounterLive do
   end
 
   def handle_event("inc", _value, socket) do
-    Logger.info("val")
     {:noreply, update(socket, :val, &(&1 + 1))}
   end
 
