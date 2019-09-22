@@ -36,7 +36,7 @@ defmodule DB do
 				  date_acquired: datetime,
 				  date_published: datetime,
 				  feed_id: feedsource_id
-      				  })
+      				  }, on_conflict: :nothing)
   end
   
   def store_in_db(feedsource_id, entry, pid) do
