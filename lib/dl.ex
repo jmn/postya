@@ -4,7 +4,8 @@ defmodule Dl do
   require HTTPoison.Error
   require ProgressBar
   require ElixirFeedParser
-
+  import Ecto.Query
+  
   def download({feedsource_id, url}) do
     case HTTPoison.get(url) do
       {:ok, response} ->
@@ -40,7 +41,7 @@ defmodule Dl do
             Logger.error("Error #{inspect(err)} for #{req_url}")
 
           _ ->
-            Enum.each(feed.entries, fn e -> DB.store_in_db(feedsource_id, e, db_pid) end)
+            Enum.each(feed.entries, fn e -> DB.store_in_db_ecto(feedsource_id, e) end)
             Logger.info("Feed: #{inspect(feed.title)}")
         end
 
@@ -56,7 +57,10 @@ defmodule Dl do
     Logger.info("Starting")
     {:ok, db_pid} = DB.db()
 
-    fs = DB.feedsources(db_pid)
+#    fs = DB.feedsources(db_pid)
+
+    query = from(f in FDFeed, select: f)
+    fs = Phx.Repo.all(query) |> Enum.map (fn item -> {item.id, item.url} end)
 
     fs
     |> Flow.from_enumerable()
