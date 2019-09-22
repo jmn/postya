@@ -7,13 +7,15 @@ defmodule Phx.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
-#    Dl.run()
+
     
     children = [
-      # Concurrently download feeds
-#      Dl.Sched, 
       # Start the Ecto repository
       Phx.Repo,
+
+      # Concurrently download feeds
+      Dl.Sched, 
+
       # Start the endpoint when the application starts
       PhxWeb.Endpoint
       # Starts a worker by calling: Phx.Worker.start_link(arg)
@@ -24,6 +26,7 @@ defmodule Phx.Application do
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Phx.Supervisor]
     Supervisor.start_link(children, opts)
+    Dl.run()
   end
 
   # Tell Phoenix to update the endpoint configuration

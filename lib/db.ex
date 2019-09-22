@@ -34,7 +34,8 @@ defmodule DB do
 				  author: "fopo",
 				  content: entry.content,
 				  date_acquired: datetime,
-				  date_published: datetime
+				  date_published: datetime,
+				  feed_id: feedsource_id
       				  })
   end
   
