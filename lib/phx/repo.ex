@@ -2,4 +2,5 @@ defmodule Phx.Repo do
   use Ecto.Repo,
     otp_app: :phx,
     adapter: Ecto.Adapters.Postgres
+  use Paginator
 end
