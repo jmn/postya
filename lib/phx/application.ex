@@ -7,11 +7,11 @@ defmodule Phx.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
-    Dl.run()
+#    Dl.run()
     
     children = [
       # Concurrently download feeds
-      Dl.Sched, 
+#      Dl.Sched, 
       # Start the Ecto repository
       Phx.Repo,
       # Start the endpoint when the application starts
