@@ -45,6 +45,10 @@ defmodule Phx.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_live_view, "~> 0.3.0"},
       {:floki, ">= 0.0.0", only: :test},
+      {:httpoison, "~> 1.5"},
+      {:progress_bar, "> 0.0.0"},
+      {:elixir_feed_parser, "~> 0.0.1"},
+      {:flow, "~> 0.14"},
     ]
   end
 

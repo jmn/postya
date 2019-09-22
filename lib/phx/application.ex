@@ -11,7 +11,7 @@ defmodule Phx.Application do
     
     children = [
       # Concurrently download feeds
-      Dl.Sched
+      Dl.Sched, 
       # Start the Ecto repository
       Phx.Repo,
       # Start the endpoint when the application starts
