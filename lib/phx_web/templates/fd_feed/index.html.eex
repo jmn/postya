@@ -1,0 +1,26 @@
+<h1>Listing Fd feed</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Url</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for fd_feed <- @fd_feed do %>
+    <tr>
+      <td><%= fd_feed.url %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.fd_feed_path(@conn, :show, fd_feed) %></span>
+        <span><%= link "Edit", to: Routes.fd_feed_path(@conn, :edit, fd_feed) %></span>
+        <span><%= link "Delete", to: Routes.fd_feed_path(@conn, :delete, fd_feed), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Fd feed", to: Routes.fd_feed_path(@conn, :new) %></span>

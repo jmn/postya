@@ -1,0 +1,13 @@
+<h1>Show Fd feed</h1>
+
+<ul>
+
+  <li>
+    <strong>Url:</strong>
+    <%= @fd_feed.url %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.fd_feed_path(@conn, :edit, @fd_feed) %></span>
+<span><%= link "Back", to: Routes.fd_feed_path(@conn, :index) %></span>

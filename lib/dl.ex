@@ -60,7 +60,7 @@ defmodule Dl do
 #    fs = DB.feedsources(db_pid)
 
     query = from(f in FDFeed, select: f)
-    fs = Phx.Repo.all(query) |> Enum.map (fn item -> {item.id, item.url} end)
+    fs = Phx.Repo.all(query) |> Enum.map((fn item -> {item.id, item.url} end))
 
     fs
     |> Flow.from_enumerable()

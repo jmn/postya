@@ -25,6 +25,7 @@ defmodule PhxWeb.Router do
     live "/users/new", UserLive.New
     live "/users/:id", UserLive.Show
     live "/users/:id/edit", UserLive.Edit
+    resources "/fd_feeds", FDFeedController
   end
 
   # Other scopes may use custom stacks.
