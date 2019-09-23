@@ -8,7 +8,7 @@ defmodule PhxWeb.CounterLive do
       query = Ecto.Query.from(p in FDFeedPost, order_by: [desc: p.id])
 
       if metadata == 0 do
-            %{entries: entries, metadata: metadata} = Phx.Repo.paginate(query, cursor_fields: [:id, :desc], sort_direction: :desc, limit: 5)
+            %{entries: entries, metadata: metadata} = Phx.Repo.paginate(query, cursor_fields: [:id], sort_direction: :desc, limit: 5)
             {entries, metadata}
       else
 	if back do
@@ -32,9 +32,10 @@ defmodule PhxWeb.CounterLive do
 
     <div>
         <%= for post <- @feedposts do %>
-    	    <h3><%=  post.title %></h3>
+    	    <h3><%=  post.title %> (<%=  post.id %>)</h3>
 	    <p><%= Phoenix.HTML.raw HtmlSanitizeEx.basic_html(post.content) %></p>
        <% end %>
+
     </div>
 
     <div>
