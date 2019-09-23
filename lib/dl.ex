@@ -55,7 +55,7 @@ defmodule Dl do
 
   def run() do
     Logger.info("Starting")
-    {:ok, db_pid} = DB.db()
+    #{:ok, db_pid} = DB.db()
 
 #    fs = DB.feedsources(db_pid)
 
