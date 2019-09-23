@@ -5,17 +5,17 @@ defmodule PhxWeb.CounterLive do
   require Ecto.Query
   
   def feedposts(metadata, back) do
-      query = Ecto.Query.from(p in FDFeedPost, order_by: [asc: p.date_acquired, asc: p.id])
+      query = Ecto.Query.from(p in FDFeedPost, order_by: [desc: p.id])
 
       if metadata == 0 do
-            %{entries: entries, metadata: metadata} = Phx.Repo.paginate(query, cursor_fields: [:id], limit: 3)
+            %{entries: entries, metadata: metadata} = Phx.Repo.paginate(query, cursor_fields: [:id, :desc], sort_direction: :desc, limit: 5)
             {entries, metadata}
       else
 	if back do
-	    %{entries: entries, metadata: metadata} = Phx.Repo.paginate(query, before: metadata.before, cursor_fields: [:id], limit: 5)
+	    %{entries: entries, metadata: metadata} = Phx.Repo.paginate(query, before: metadata.before, cursor_fields: [:id, :desc], sort_direction: :desc,  limit: 5)
             {entries, metadata}
 	else
-	    %{entries: entries, metadata: metadata} = Phx.Repo.paginate(query, after: metadata.after, cursor_fields: [:id], limit: 5)
+	    %{entries: entries, metadata: metadata} = Phx.Repo.paginate(query, after: metadata.after, cursor_fields: [:id, :desc], sort_direction: :desc, limit: 5)
 	    {entries, metadata}
 	end
       end
@@ -35,8 +35,13 @@ defmodule PhxWeb.CounterLive do
     	    <h3><%=  post.title %></h3>
 	    <p><%= Phoenix.HTML.raw HtmlSanitizeEx.basic_html(post.content) %></p>
        <% end %>
-
     </div>
+
+    <div>
+      <button phx-click="dec">-</button>
+      <button phx-click="inc">+</button>
+    </div>
+
     """
   end
 
