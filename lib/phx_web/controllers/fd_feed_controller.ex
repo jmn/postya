@@ -16,6 +16,8 @@ defmodule PhxWeb.FDFeedController do
   def create(conn, %{"fd_feed" => fd_feed_params}) do
     case Feeds.create_fd_feed(fd_feed_params) do
       {:ok, fd_feed} ->
+        Dl.run()
+
         conn
         |> put_flash(:info, "Fd feed created successfully.")
         |> redirect(to: Routes.fd_feed_path(conn, :show, fd_feed))

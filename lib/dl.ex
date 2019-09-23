@@ -15,6 +15,7 @@ defmodule Dl do
 
           _ ->
             {:error, {response.status_code, response.request_url, response.body}}
+	_ -> {:error}
         end
 
       {:error, err} ->
@@ -55,9 +56,6 @@ defmodule Dl do
 
   def run() do
     Logger.info("Starting")
-    #{:ok, db_pid} = DB.db()
-
-#    fs = DB.feedsources(db_pid)
 
     query = from(f in FDFeed, select: f)
     fs = Phx.Repo.all(query) |> Enum.map((fn item -> {item.id, item.url} end))

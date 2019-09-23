@@ -13,7 +13,6 @@ defmodule FDFeed do
     feed
     |> cast(attrs, [:url])
     |> validate_required([:url])
-    |> validate_url([:url], message: "URL is not a valid URL!")
   end
 
 def validate_url(changeset, field, options \\ []) do
