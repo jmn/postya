@@ -1,7 +1,7 @@
 defmodule DB do
   require Logger
   require Ecto.Query
-  
+
   def db() do
     uri = System.get_env("DATABASE_URL") |> URI.parse()
     [username, password] = String.split(uri.userinfo, ":")
@@ -25,20 +25,31 @@ defmodule DB do
   end
 
   def store_in_db_ecto(feedsource_id, entry) do
-      datetime = DateTime.truncate(DateTime.utc_now(), :second)
+    datetime = DateTime.truncate(DateTime.utc_now(), :second)
 
-      Logger.info("Storing #{entry.url}")
+    Logger.info("Storing #{entry.url}")
 
-      Phx.Repo.insert(%FDFeedPost{title: entry.title,
-      			          url: entry.url,
-				  author: "fopo",
-				  content: entry.content,
-				  date_acquired: datetime,
-				  date_published: datetime,
-				  feed_id: feedsource_id
-      				  }, on_conflict: :nothing)
+    content =
+      if entry.content do
+        entry.content
+      else
+        entry.summary
+      end
+
+    Phx.Repo.insert(
+      %FDFeedPost{
+        title: entry.title,
+        url: entry.url,
+        author: "fopo",
+        content: content,
+        date_acquired: datetime,
+        date_published: datetime,
+        feed_id: feedsource_id
+      },
+      on_conflict: :nothing
+    )
   end
-  
+
   def store_in_db(feedsource_id, entry, pid) do
     # {:ok, datetime, 0} = DateTime.from_iso8601(entry.updated)
     datetime = DateTime.utc_now()
