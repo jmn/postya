@@ -31,7 +31,7 @@ defmodule Dl do
     end)
   end
 
-  def handle_result(result, db_pid) do
+  def handle_result(result) do
     case result do
       {:ok, feedsource_id, body, req_url} ->
         feed = ElixirFeedParser.parse(body)
@@ -66,7 +66,7 @@ defmodule Dl do
     |> Flow.from_enumerable()
     |> Flow.partition()
     |> Flow.map(&download/1)
-    |> Flow.map(&handle_result(&1, db_pid))
+    |> Flow.map(&handle_result(&1))
     |> show_progress(length(fs))
     |> Flow.run()
   end
