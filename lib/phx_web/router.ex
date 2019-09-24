@@ -28,6 +28,11 @@ defmodule PhxWeb.Router do
     resources "/fd_feeds", FDFeedController
   end
 
+  scope "/e" do
+    pipe_through :browser
+    live "/", MarkdownLiveWeb.MarkdownLive
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", PhxWeb do
   #   pipe_through :api

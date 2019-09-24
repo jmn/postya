@@ -50,7 +50,8 @@ defmodule Phx.MixProject do
       {:elixir_feed_parser, "~> 0.0.1"},
       {:flow, "~> 0.14"},
       {:html_sanitize_ex, "~> 1.3.0"},
-      {:paginator, "~> 0.6"}
+      {:paginator, "~> 0.6"},
+      {:earmark, "~> 1.3"},
     ]
   end
 

@@ -5,7 +5,7 @@ defmodule Dl do
   require ProgressBar
   require ElixirFeedParser
   import Ecto.Query
-  
+
   def download({feedsource_id, url}) do
     case HTTPoison.get(url) do
       {:ok, response} ->
@@ -15,7 +15,7 @@ defmodule Dl do
 
           _ ->
             {:error, {response.status_code, response.request_url, response.body}}
-	_ -> {:error}
+#	_ -> {:error}
         end
 
       {:error, err} ->
