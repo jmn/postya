@@ -1,11 +1,14 @@
 <div class="flex-container">
   <!-- User input -->
   <div class="flex-child">
-    <form phx-change="render">
-      <textarea class="flex-child" autofocus name="user_md" phx-change="render"><%= @user_md %></textarea>
-    </form>
-  </div>
-
+   <%= f = form_for @changeset, "#", [phx_change: :render, phx_submit: :save] %>
+        <%= text_input f, :title, class: "flex-child", name: "title", required: true %>
+        <%= textarea f, :url, class: "flex-child", name: "content", value: @user_md, autofocus: true %>
+        
+        <%= submit "Save" %>
+      </form>
+  </div> 
+      
   <!-- Rendered markdown -->
   <div class="flex-child render-pane">
     <%= raw @md_html %>

@@ -1,6 +1,10 @@
 defmodule MarkdownLiveWeb.MarkdownLive do
   use Phoenix.LiveView
   alias MarkdownLiveWeb.MarkdownView
+  alias Phx.Blog.Post
+  alias Phx.Blog
+
+  require Logger
 
   @default_template ~s"""
   ## Markdown Live
@@ -29,7 +33,8 @@ defmodule MarkdownLiveWeb.MarkdownLive do
     default_md =
       Earmark.as_html!(default_template)
 
-    {:ok, assign(socket, user_md: default_template, md_html: default_md)}
+    changeset = Blog.change_post(%Post{})
+    {:ok, assign(socket, user_md: default_template, md_html: default_md, changeset: changeset)}
   end
 
   def handle_event("render", %{"user_md" => user_md}, socket) do
@@ -41,6 +46,25 @@ defmodule MarkdownLiveWeb.MarkdownLive do
 
     {:noreply, assign(socket, user_md: user_md, md_html: md_html)}
   end
+
+  def handle_event("save", cs, socket) do
+    #Logger.info(inspect(user_md))
+    Logger.info("Save: #{inspect cs}")
+
+    case Blog.create_post(cs) do
+      {:ok, user} ->
+        {:ok,
+         socket
+         |> put_flash(:info, "Post created successfully.")}
+       #  |> redirect(to: Routes.live_path(socket, UserLive.Show, user))}
+
+      {:error, %Ecto.Changeset{} = changeset} ->
+        Logger.error("Error #{inspect changeset}")
+        {:noreply, assign(socket, changeset: changeset)}
+    end
+
+  end
+
 
   # TODO: listen for tab while in the text area and insert spaces
   # TODO: download button

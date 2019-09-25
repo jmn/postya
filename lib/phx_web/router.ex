@@ -26,6 +26,7 @@ defmodule PhxWeb.Router do
     live "/users/:id", UserLive.Show
     live "/users/:id/edit", UserLive.Edit
     resources "/fd_feeds", FDFeedController
+    resources "/posts", PostController
   end
 
   scope "/e" do
