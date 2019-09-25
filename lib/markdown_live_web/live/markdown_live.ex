@@ -53,7 +53,7 @@ defmodule MarkdownLiveWeb.MarkdownLive do
 
     case Blog.create_post(cs) do
       {:ok, user} ->
-        {:ok,
+        {:noreply,
          socket
          |> put_flash(:info, "Post created successfully.")}
        #  |> redirect(to: Routes.live_path(socket, UserLive.Show, user))}
