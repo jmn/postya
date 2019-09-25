@@ -37,7 +37,7 @@ defmodule MarkdownLiveWeb.MarkdownLive do
     {:ok, assign(socket, user_md: default_template, md_html: default_md, changeset: changeset)}
   end
 
-  def handle_event("render", %{"user_md" => user_md}, socket) do
+  def handle_event("render", %{"content" => user_md}, socket) do
     md_html =
       case Earmark.as_html(user_md) do
         {_, html_doc, _} ->
