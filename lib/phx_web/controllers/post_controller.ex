@@ -28,7 +28,8 @@ defmodule PhxWeb.PostController do
 
   def show(conn, %{"id" => id}) do
     post = Blog.get_post!(id)
-    render(conn, "show.html", post: post)
+    md = Earmark.as_html!(post.content)
+    render(conn, "show.html", post: post, md: md)
   end
 
   def edit(conn, %{"id" => id}) do

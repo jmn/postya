@@ -3,7 +3,7 @@ defmodule MarkdownLiveWeb.MarkdownLive do
   alias MarkdownLiveWeb.MarkdownView
   alias Phx.Blog.Post
   alias Phx.Blog
-
+  alias PhxWeb.Router.Helpers, as: Routes
   require Logger
 
   @default_template ~s"""
@@ -26,12 +26,12 @@ defmodule MarkdownLiveWeb.MarkdownLive do
       case System.get_env("DEFAULT_MD") do
         nil ->
           @default_template
+
         path ->
           File.read!(path)
       end
 
-    default_md =
-      Earmark.as_html!(default_template)
+    default_md = Earmark.as_html!(default_template)
 
     changeset = Blog.change_post(%Post{})
     {:ok, assign(socket, user_md: default_template, md_html: default_md, changeset: changeset)}
@@ -42,31 +42,28 @@ defmodule MarkdownLiveWeb.MarkdownLive do
       case Earmark.as_html(user_md) do
         {_, html_doc, _} ->
           html_doc
-    end
+      end
 
     {:noreply, assign(socket, user_md: user_md, md_html: md_html)}
   end
 
   def handle_event("save", cs, socket) do
-    #Logger.info(inspect(user_md))
-    Logger.info("Save: #{inspect cs}")
+    # Logger.info(inspect(user_md))
+    Logger.info("Save: #{inspect(cs)}")
 
     case Blog.create_post(cs) do
-      {:ok, user} ->
-        {:noreply,
+      {:ok, post} ->
+        {:stop,
          socket
-         |> put_flash(:info, "Post created successfully.")}
-       #  |> redirect(to: Routes.live_path(socket, UserLive.Show, user))}
+         |> put_flash(:info, "Post created successfully.")
+         |> redirect(to: Routes.post_path(socket, :show, post))}
 
       {:error, %Ecto.Changeset{} = changeset} ->
-        Logger.error("Error #{inspect changeset}")
+        Logger.error("Error #{inspect(changeset)}")
         {:noreply, assign(socket, changeset: changeset)}
     end
-
   end
-
 
   # TODO: listen for tab while in the text area and insert spaces
   # TODO: download button
-
 end
