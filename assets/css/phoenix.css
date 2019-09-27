@@ -18,7 +18,7 @@ h6{font-size: 1.4rem; letter-spacing: 0; line-height: 1.2}
 
 .container{
   margin: 0 auto;
-  max-width: 80.0rem;
+  max-width: 120.0rem;
   padding: 0 2.0rem;
   position: relative;
   width: 100%
@@ -131,4 +131,104 @@ header nav a {
     flex-basis: 527px;
     margin: 2rem 1rem;
   }
+}
+
+/* Paste starts here */
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.flex-child {
+  width: 100%;
+  padding: 10px;
+  margin: 0px 20px 0px 0px;
+}
+
+.render-pane {
+
+}
+
+textarea {
+  outline: none;
+  overflow: auto;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  height: 600px;
+
+  background: transparent;
+  border-color: #9890e3;
+  border-width: 0px 2px 0px 0px;
+
+  font-size: 16px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+  /* background-image: linear-gradient(45deg, #874da2 0%, #c43a30 100%); */
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  font-size: 16px;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+pre {
+  font-family: 'Source Code Pro', monospace;
+  background: #f4f4f4;
+  border: 2px solid #9890e3;
+  color: #666;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.render-pane h1:first-child,
+.render-pane h2:first-child, 
+.render-pane h3:first-child, 
+.render-pane h4:first-child, 
+.render-pane h5:first-child, 
+.render-pane h5:first-child {
+  margin-top: 0px !important;
+}
+
+/* background on table cols */
+tr:nth-child(even) {
+  background: #9890e3;
+}
+
+/* black border inside table */
+th, td {
+  border-bottom: 1px solid black;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid #9890e3;
+  width: 100%;
+  background: #f4f4f4;
+}
+
+hr {
+ border-color: #9890e3; 
 }
