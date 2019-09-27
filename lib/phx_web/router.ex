@@ -25,6 +25,17 @@ defmodule PhxWeb.Router do
   end
 
   scope "/", PhxWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+
+    get "/posts/new", PostController, :new
+    post "/posts/new", PostController, :create
+    delete "/posts/:id", PostController, :delete
+    get "/posts/:id/edit", PostController, :edit
+    put "/posts/:id/edit", PostController, :update
+    get "/protected", PageController, :protected
+  end
+
+  scope "/", PhxWeb do
     pipe_through [:browser, :auth]
 
     live "/", CounterLive, session: [:user_id]
@@ -37,15 +48,6 @@ defmodule PhxWeb.Router do
     get "/logout", SessionController, :logout
     get "/posts/:id", PostController, :show
     get "/posts", PostController, :index
-    get "/posts/new", PostController, :new
-  end
-
-  scope "/", PhxWeb do
-    pipe_through [:browser, :auth, :ensure_auth]
-    delete "/posts/:id", PostController, :delete
-    get "/posts/:id/edit", PostController, :edit
-    put "/posts/:id/edit", PostController, :update
-    get "/protected", PageController, :protected
   end
 
   scope "/e" do
