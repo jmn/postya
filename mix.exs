@@ -52,7 +52,9 @@ defmodule Phx.MixProject do
       {:html_sanitize_ex, "~> 1.3.0"},
       {:paginator, "~> 0.6"},
       {:earmark, "~> 1.3"},
-      {:ecto_autoslug_field, "~> 2.0"}
+      {:ecto_autoslug_field, "~> 2.0"},
+      {:guardian, "~> 1.2"},
+      {:argon2_elixir, "~> 2.0"}
     ]
   end
 
