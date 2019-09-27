@@ -30,7 +30,6 @@ defmodule PhxWeb.Router do
     live "/", CounterLive, session: [:user_id]
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
-    # resources "/users", UserController
     resources "/fd_feeds", FDFeedController
     # resources "/posts", PostController
     get "/login", SessionController, :new
@@ -45,6 +44,7 @@ defmodule PhxWeb.Router do
     pipe_through [:browser, :auth, :ensure_auth]
     delete "/posts/:id", PostController, :delete
     get "/posts/:id/edit", PostController, :edit
+    put "/posts/:id/edit", PostController, :update
     get "/protected", PageController, :protected
   end
 
