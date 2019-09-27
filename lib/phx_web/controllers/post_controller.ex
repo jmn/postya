@@ -29,7 +29,7 @@ defmodule PhxWeb.PostController do
 
   def show(conn, %{"id" => id}) do
     post = Blog.get_post!(id)
-    md = Earmark.as_html!(post.content)
+    md = Earmark.as_html!(post.content, MarkdownLiveWeb.MarkdownLive.earmark_options())
     render(conn, "show.html", post: post, md: md)
   end
 

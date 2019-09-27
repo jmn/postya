@@ -21,6 +21,14 @@ defmodule MarkdownLiveWeb.MarkdownLive do
     MarkdownView.render("index.html", assigns)
   end
 
+  def earmark_options() do
+    %Earmark.Options{
+      # Prefix the `code` tag language class, as in `language-elixir`, for
+      # proper support from http://prismjs.com/
+      code_class_prefix: "language-"
+    }
+  end
+
   def mount(_session, socket) do
     default_template =
       case System.get_env("DEFAULT_MD") do
@@ -31,7 +39,7 @@ defmodule MarkdownLiveWeb.MarkdownLive do
           File.read!(path)
       end
 
-    default_md = Earmark.as_html!(default_template)
+    default_md = Earmark.as_html!(default_template, earmark_options())
 
     changeset = Blog.change_post(%Post{})
     {:ok, assign(socket, user_md: default_template, md_html: default_md, changeset: changeset)}
