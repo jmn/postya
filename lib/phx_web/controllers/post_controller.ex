@@ -4,6 +4,7 @@ defmodule PhxWeb.PostController do
   alias Phx.Blog
   alias Phx.Blog.Post
 
+  @spec index(Plug.Conn.t(), any) :: Plug.Conn.t()
   def index(conn, _params) do
     posts = Blog.list_posts()
     render(conn, "index.html", posts: posts)

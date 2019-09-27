@@ -25,4 +25,10 @@ defmodule Phx.Blog.Post do
     |> TitleSlug.maybe_generate_slug
     |> TitleSlug.unique_constraint
   end
+
+  defimpl Phoenix.Param, for: Phx.Blog.Post do
+    def to_param(%{slug: slug}) do
+      "#{slug}"
+    end
+  end
 end

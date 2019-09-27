@@ -2,6 +2,7 @@
   <!-- User input -->
   <div class="flex-child">
    <%= f = form_for @changeset, "#", [phx_change: :render, phx_submit: :save] %>
+        <%= error_tag f, :slug %>
         <%= text_input f, :title, class: "flex-child", name: "title", required: true %>
         <%= textarea f, :url, class: "flex-child", name: "content", value: @user_md, autofocus: true %>
         
