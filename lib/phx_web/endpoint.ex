@@ -2,7 +2,20 @@ defmodule PhxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phx
 
   if Mix.env() == :prod do
-    plug Phx.Plugs.CanonicalDomain
+    plug(:canonical_host)
+  end
+
+  defp canonical_host(conn, _opts) do
+    :phx
+    |> Application.get_env(:canonical_host)
+    |> case do
+      host when is_binary(host) ->
+        opts = PlugCanonicalHost.init(canonical_host: host)
+        PlugCanonicalHost.call(conn, opts)
+
+      _ ->
+        conn
+    end
   end
 
   socket "/live", Phoenix.LiveView.Socket
