@@ -545,14 +545,23 @@ h6 {
     letter-spacing: 0;
     line-height: 1.2;
 }
+@media only screen and (min-width: 961px) {
+    .container {
+        margin: 0 auto;
+        max-width: 120rem;
+        padding: 0 2rem;
+        position: relative;
+        width: 60%;
+    }
+}
 
 .container {
     margin: 0 auto;
     max-width: 120rem;
     padding: 0 2rem;
     position: relative;
-    width: 60%;
 }
+
 select {
     width: auto;
 }
