@@ -34,6 +34,7 @@ defmodule PhxWeb.SessionController do
     |> put_flash(:info, "Welcome back!")
     # This module's full name is Auth.UserManager.Guardian.Plug,
     |> Guardian.Plug.sign_in(user)
+    |> Guardian.Plug.remember_me(user)
     # and the arguments specified in the Guardian.Plug.sign_in()
     |> redirect(to: "/protected")
   end
