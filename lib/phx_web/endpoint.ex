@@ -1,6 +1,10 @@
 defmodule PhxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phx
 
+  if Mix.env() == :prod do
+    plug Phx.Plugs.CanonicalDomain
+  end
+
   socket "/live", Phoenix.LiveView.Socket
 
   socket "/socket", PhxWeb.UserSocket,
