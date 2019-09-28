@@ -56,7 +56,8 @@ defmodule Phx.MixProject do
       {:guardian, "~> 1.2"},
       {:argon2_elixir, "~> 2.0"},
       {:plug_canonical_host, "~> 1.0"},
-      {:observer_cli, "~> 1.5"}
+      {:observer_cli, "~> 1.5"},
+      {:appsignal, "~> 1.0"}
     ]
   end
 

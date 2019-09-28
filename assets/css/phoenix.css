@@ -280,7 +280,6 @@ input[type="radio"] {
 }
 .row .column {
     display: block;
-    flex: 1 1 auto;
     margin-left: 0;
     max-width: 100%;
     width: 100%;
@@ -701,7 +700,7 @@ textarea {
     border-width: 0px 2px 0px 0px;
 
     font-size: 16px;
-    font-family: "Georgia, Cambria, " Times New Roman ", Times, serif";
+    font-family: 'Georgia, Cambria, "Times New Roman", Times, serif';
 }
 
 body {
@@ -713,7 +712,7 @@ body {
     background-attachment: fixed;
 
     font-size: 16px;
-    font-family: "Source Sans Pro", sans-serif;
+    font-family: '"Georgia, Cambria, " Times New Roman ", Times, serif"';
 }
 
 pre {
@@ -753,14 +752,9 @@ tr:nth-child(even) {
 }
 
 /* black border inside table */
-th,
-td {
-    border-bottom: 1px solid black;
-}
 
 table {
     border-collapse: collapse;
-    border: 2px solid silver;
     width: 100%;
     border-spacing: 1em;
 }
