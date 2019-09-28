@@ -11,7 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :phx, PhxWeb.Endpoint,
   url: [host: "www.postya.net", port: 80],
-  canonical_host: "www.postya.net"
+  canonical_host: "www.postya.net",
   cache_static_manifest: "priv/static/cache_manifest.json",
   force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
