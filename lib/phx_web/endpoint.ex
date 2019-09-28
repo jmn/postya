@@ -2,6 +2,7 @@ defmodule PhxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phx
 
   if Mix.env() == :prod do
+    plug Phx.Plugs.WWWRedirect
     plug(:canonical_host)
   end
 
