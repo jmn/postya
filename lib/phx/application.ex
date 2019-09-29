@@ -25,6 +25,7 @@ defmodule Phx.Application do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Phx.Supervisor]
+    {:ok, _} = Application.ensure_all_started(:appsignal)
     Supervisor.start_link(children, opts)
   end
 
