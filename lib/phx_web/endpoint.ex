@@ -1,5 +1,6 @@
 defmodule PhxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phx
+  use Appsignal.Phoenix
 
   if Mix.env() == :prod do
     plug Phx.Plugs.WWWRedirect

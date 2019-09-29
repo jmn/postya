@@ -18,7 +18,8 @@ config :phx, PhxWeb.Endpoint,
   pubsub: [name: Phx.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [
     signing_salt: "6nt6/L3OuKLZ1zA1QXXU3LCk7xEk94pM"
-  ]
+  ],
+  instrumenters: [Appsignal.Phoenix.Instrumenter]
 
 # Configures Elixir's Logger
 config :logger, :console,
