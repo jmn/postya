@@ -7,7 +7,13 @@ defmodule Phx.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
+    require Prometheus.Registry
 
+    Phx.PhoenixInstrumenter.setup()
+    Phx.PipelineInstrumenter.setup()
+    # Phx.RepoInstrumenter.setup()
+    Prometheus.Registry.register_collector(:prometheus_process_collector)
+    Phx.PrometheusExporter.setup()
 
     children = [
       # Start the Ecto repository
@@ -17,7 +23,7 @@ defmodule Phx.Application do
       Dl.Sched,
 
       # Start the endpoint when the application starts
-      PhxWeb.Endpoint,
+      PhxWeb.Endpoint
       # Starts a worker by calling: Phx.Worker.start_link(arg)
       # {Phx.Worker, arg},
     ]

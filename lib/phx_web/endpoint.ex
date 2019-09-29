@@ -2,6 +2,11 @@ defmodule PhxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phx
   use Appsignal.Phoenix
 
+  # makes the /metrics URL happen
+  plug Phx.PrometheusExporter
+  # measures pipeline exec times
+  plug Phx.PipelineInstrumenter
+
   if Mix.env() == :prod do
     plug Phx.Plugs.WWWRedirect
     plug(:canonical_host)
