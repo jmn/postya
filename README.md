@@ -1,4 +1,14 @@
 # Phx
+## To build and deploy
+- `mix edeliver build release production`
+- `mix edeliver deploy release to production`
+
+## To start the release if it's not running
+- `mix edeliver start production`
+
+## To perform database migrations on prod:
+
+
 
 To start your Phoenix server:
 
