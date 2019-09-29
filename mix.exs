@@ -20,7 +20,7 @@ defmodule Phx.MixProject do
   def application do
     [
       mod: {Phx.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :edeliver]
     ]
   end
 
@@ -57,7 +57,9 @@ defmodule Phx.MixProject do
       {:argon2_elixir, "~> 2.0"},
       {:plug_canonical_host, "~> 1.0"},
       {:observer_cli, "~> 1.5"},
-      {:appsignal, "~> 1.0"}
+      {:appsignal, "~> 1.0"},
+      {:distillery, "~> 2.1"},
+      {:edeliver, ">= 1.6.0"}
     ]
   end
 

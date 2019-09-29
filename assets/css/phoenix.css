@@ -773,7 +773,7 @@ hr {
 
     /* Dark theme */
     --c-dark-text: #fff;
-    --c-dark-background: #333;
+    --c-dark-background: #000;
     --c-dark-focus: deeppink;
     --c-dark-interactive: palegreen;
 }
