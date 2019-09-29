@@ -4,9 +4,12 @@ BUILD_HOST="i.jmnorlund.net"
 BUILD_USER="deploy"
 BUILD_AT="/tmp/edeliver/phx/builds"
 
-STAGING_HOSTS="i.jmnorlund.net.net"
+STAGING_HOSTS="i.jmnorlund.net"
 STAGING_USER="deploy"
 DELIVER_TO="/home/deploy/apps"
+
+PRODUCTION_HOSTS="i.jmnorlund.net"
+PRODUCTION_USER="deploy"
 
 # For *Phoenix* projects, symlink prod.secret.exs to our tmp source
 pre_erlang_get_and_update_deps() {
