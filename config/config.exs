@@ -33,6 +33,12 @@ config :phx, Phx.UserManager.Guardian,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :appsignal, :config,
+  active: true,
+  name: "Phx",
+  push_api_key: "03cb3eeb-a289-48e3-8860-75d3176a3f74",
+  env: Mix.env
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"
