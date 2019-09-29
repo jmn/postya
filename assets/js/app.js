@@ -22,3 +22,14 @@ liveSocket.connect()
 //
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
+
+// Dark mode js: https://codepen.io/kleinfreund/pen/bJwqpB
+document.addEventListener("DOMContentLoaded", function() {
+    const checkbox = document.querySelector(".dark-mode-checkbox")
+
+    checkbox.checked = localStorage.getItem("darkMode") === "true"
+
+    checkbox.addEventListener("change", function(event) {
+        localStorage.setItem("darkMode", event.currentTarget.checked)
+    })
+})

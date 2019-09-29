@@ -9,6 +9,14 @@
     <link rel="canonical" href="<%= PhxWeb.Router.Helpers.url(@conn) <> @conn.request_path %>">
   </head>
   <body>
+
+  <input id="dark-mode" class="dark-mode-checkbox visually-hidden" type="checkbox">
+
+  <div class="theme-container grow">
+    <label class="dark-mode-label" for="dark-mode">
+      Dark mode
+    </label>
+
     <header>
       <section class="container">
         <nav role="navigation">
@@ -27,5 +35,7 @@
       <%= render @view_module, @view_template, assigns %>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+  </div>
+
   </body>
 </html>
