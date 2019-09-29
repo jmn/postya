@@ -5,10 +5,18 @@
 
 ## To start the release if it's not running
 - `mix edeliver start production`
+otherwise,
+- `mix edeliver restart production`
 
 ## To perform database migrations on prod:
+- `mix edeliver migrate production`
 
+## To get a remote console on the production system
+Ssh to it and run:
+`~/apps/phx/releases/<releasen number>/phx.sh remote_console`
 
+## For verbosity
+Use `-V` flag.
 
 To start your Phoenix server:
 
