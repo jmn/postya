@@ -25,7 +25,8 @@ defmodule MarkdownLiveWeb.MarkdownLive do
     %Earmark.Options{
       # Prefix the `code` tag language class, as in `language-elixir`, for
       # proper support from http://prismjs.com/
-      code_class_prefix: "language-"
+      code_class_prefix: "language-",
+      gfm: true
     }
   end
 

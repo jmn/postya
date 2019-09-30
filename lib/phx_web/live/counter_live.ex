@@ -49,7 +49,9 @@ defmodule PhxWeb.CounterLive do
       <div>
           <%= for post <- @feedposts do %>
             <h3><%=  post.title %> (<%=  post.id %>)</h3>
-        <p><%= Phoenix.HTML.raw HtmlSanitizeEx.basic_html(post.content) %></p>
+        <div>
+          <%= Phoenix.HTML.raw HtmlSanitizeEx.basic_html(post.content) %>
+        </div>
         <% end %>
 
       </div>
