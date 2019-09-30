@@ -7,6 +7,10 @@ Old releases are located in `~/.deliver/releases/`.
 - `mix edeliver build release production`
 - `mix edeliver deploy release to production`
 
+## hot-code upgrade
+- `mix edeliver build upgrade --with=0.0.1`
+- `mix edeliver deploy upgrade to production`
+
 ## To start the release if it's not running
 - `mix edeliver start production`
 otherwise,
