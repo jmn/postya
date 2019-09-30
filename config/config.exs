@@ -19,7 +19,8 @@ config :phx, PhxWeb.Endpoint,
   live_view: [
     signing_salt: "6nt6/L3OuKLZ1zA1QXXU3LCk7xEk94pM"
   ],
-  instrumenters: [Appsignal.Phoenix.Instrumenter]
+  instrumenters: [Appsignal.Phoenix.Instrumenter],
+  version: Mix.Project.config[:version]
 
 # Configures Elixir's Logger
 config :logger, :console,
