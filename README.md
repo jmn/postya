@@ -1,5 +1,9 @@
 # Phx
 ## To build and deploy
+Change the version in `mix.exs`.
+Old releases are located in `~/.deliver/releases/`.
+
+
 - `mix edeliver build release production`
 - `mix edeliver deploy release to production`
 
