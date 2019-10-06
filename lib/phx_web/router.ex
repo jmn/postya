@@ -39,15 +39,13 @@ defmodule PhxWeb.Router do
     pipe_through [:browser, :auth]
 
     live "/", CounterLive, session: [:user_id]
-    get "/hello", HelloController, :index
-    get "/hello/:messenger", HelloController, :show
     resources "/fd_feeds", FDFeedController
-    # resources "/posts", PostController
     get "/login", SessionController, :new
     post "/login", SessionController, :login
     get "/logout", SessionController, :logout
     get "/posts/:id", PostController, :show
     get "/posts", PostController, :index
+    resources "/chat", ChatController
   end
 
   scope "/e" do
