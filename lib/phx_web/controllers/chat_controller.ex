@@ -16,7 +16,7 @@ defmodule PhxWeb.ChatController do
     LiveView.Controller.live_render(
       conn,
       ChatLive,
-      session: %{chat: chat}
+      session: %{chat: chat, user: Guardian.Plug.current_resource(conn)}
     )
   end
 end

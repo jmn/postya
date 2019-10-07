@@ -20,7 +20,7 @@
     <div class="form-group">
       <%= form_for @message, "#", [phx_change: :typing, phx_submit: :message], fn _f -> %>
       <%= text_input :message, :message, value: @message.changes[:message], phx_blur: "stop_typing", placeholder: "write your message here..." %>
-      <%= hidden_input :message, :user, value: "jmn"  %>
+      <%= hidden_input :message, :user, value: @user  %>
       <%= hidden_input :message, :chat_id, value: 1  %>
 
       <%= submit "submit" %>

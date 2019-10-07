@@ -9,11 +9,20 @@ defmodule PhxWeb.ChatLive do
     PhxWeb.ChatView.render("show.html", assigns)
   end
 
-  def mount(_session, socket) do
+  def mount(%{user: user}, socket) do
     PhxWeb.Endpoint.subscribe(topic(1))
+    # Referencing parent assigns:
+    # https://github.com/phoenixframework/phoenix_live_view/blob/c7ea73ba9223e2cf285fb970cd9090f92183ed80/lib/phoenix_live_view.ex#L610
+    username = if user do
+      user.username
+    else
+      "Anonymous"
+    end
 
     {:ok, assign(socket, messages: Communication.list_messages(),
-                        message: Communication.change_message())}
+                        message: Communication.change_message(),
+                        user: username
+                        )}
   end
 
   def handle_event("message", %{"message" => %{"message" => ""}}, socket) do
