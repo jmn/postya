@@ -18,7 +18,7 @@ config :phx, PhxWeb.Endpoint,
 # force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
 # Do not print debug messages in production
-config :logger, level: :info
+config :logger, level: :debug
 
 # ## SSL Support
 #
