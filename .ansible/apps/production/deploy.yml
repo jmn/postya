@@ -5,8 +5,8 @@
   vars:
     mix_env: prod
     local_release_dir: "{{ local_build_dir }}/_build/{{ mix_env }}/rel/phx"
-#    build_version: "{{ lookup('file', local_build_dir + '/_build/{{ mix_env }}/rel/phx/BUILD_VERSION') }}"
-#    commit_hash: "{{ lookup('file', local_build_dir + '/_build/{{ mix_env }}/rel/phx/COMMIT_HASH') }}"
+    build_version: "{{ lookup('file', local_build_dir + '/_build/{{ mix_env }}/rel/phx/BUILD_VERSION') }}"
+    commit_hash: "{{ lookup('file', local_build_dir + '/_build/{{ mix_env }}/rel/phx/COMMIT_HASH') }}"
 
 #  pre_tasks:
 #    - name: Get git version
