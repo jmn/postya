@@ -2,7 +2,8 @@ AUTO_VERSION=git-revision+commit-count
 RELEASE_VERSION=git-revision+commit
 
 build:
-	mix edeliver build release production --skip-git-clean --auto-version=commit-count+git-revision
+	cd .ansible && ansible-playbook -i apps/build/inventory apps/build/build.yml -vvv
+#	mix edeliver build release production --skip-git-clean --auto-version=commit-count+git-revision
 	
 deploy:
 	mix edeliver deploy release to production	
