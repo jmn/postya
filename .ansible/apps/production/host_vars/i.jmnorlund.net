@@ -1,7 +1,7 @@
 releases_dir: "/home/deploy/apps/phx/releases"
 current_dir: "/home/deploy/apps/phx/current"
 releases_to_keep: 10
-database_username: postgres
+database_username: phx
 
 secret_key_base: !vault |
           $ANSIBLE_VAULT;1.1;AES256
