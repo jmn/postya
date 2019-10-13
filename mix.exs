@@ -4,13 +4,19 @@ defmodule Phx.MixProject do
   def project do
     [
       app: :phx,
-      version: "0.1.5",
-      elixir: "~> 1.5",
+      version: System.get_env("BUILD_VERSION") || "0.1.5",
+      elixir: "~> 1.9",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      releases: [
+        phx: [
+          include_executables_for: [:unix],
+          applications: [runtime_tools: :permanent]
+        ],
+      ]
     ]
   end
 
