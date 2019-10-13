@@ -1,21 +1,11 @@
-AUTO_VERSION=git-revision+commit-count
-RELEASE_VERSION=git-revision+commit
+all: build deploy
+.PHONY: all
 
 build:
 	cd .ansible && ansible-playbook -i apps/build/inventory apps/build/build.yml -vvv
-#	mix edeliver build release production --skip-git-clean --auto-version=commit-count+git-revision
 	
 deploy:
 	cd .ansible && ansible-playbook -i apps/production/inventory apps/production/deploy.yml -vvv
-#	mix edeliver deploy release to production	
 
-deploy-fast:
-	mix edeliver build release production --skip-git-clean --skip-mix-clean	&& mix edeliver deploy release to production	
-
-restart:
-	mix edeliver restart production
-
-upgrade:
-	mix edeliver upgrade --auto-version=commit-count+git-revision #--skip-git-clean
 secret:
 	ansible-vault encrypt_string --vault-password-file ".ansible/.vault_pass.txt" --stdin-name "$name"

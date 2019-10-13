@@ -16,7 +16,7 @@ config :phx, :pow,
   repo: Phx.Repo,
   extensions: [PowResetPassword, PowEmailConfirmation],
   controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
-  mailer_backend: PhxWeb.PowMailer,
+  mailer_backend: PhxWeb.PowDebugMailer,
   web_module: PhxWeb
 
 # Configures the endpoint

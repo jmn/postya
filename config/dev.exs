@@ -8,6 +8,8 @@ use Mix.Config
 #    """
 
 # Configure your database
+config :phx, :pow,
+  mailer_backend: PhxWeb.PowDebugMailer
 config :phx, Phx.Repo,
   #  url: database_url
   username: "postgres",
@@ -82,7 +84,3 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
-
-config :phx, PhxWeb.PowMailer,
-  adapter: Swoosh.Adapters.Sendgrid,
-  api_key: "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" # Specify adapter-specific configuration
