@@ -1,0 +1,7 @@
+---
+all:
+  hosts:
+    i.jmnorlund.net
+  vars:
+    local_build_dir: /tmp/phx_build
+    ansible_user: deploy
