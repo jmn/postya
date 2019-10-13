@@ -6,7 +6,8 @@ build:
 #	mix edeliver build release production --skip-git-clean --auto-version=commit-count+git-revision
 	
 deploy:
-	mix edeliver deploy release to production	
+	cd .ansible && ansible-playbook -i apps/production/inventory apps/production/deploy.yml -vvv
+#	mix edeliver deploy release to production	
 
 deploy-fast:
 	mix edeliver build release production --skip-git-clean --skip-mix-clean	&& mix edeliver deploy release to production	
