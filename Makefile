@@ -14,4 +14,4 @@ restart:
 	mix edeliver restart production
 
 upgrade:
-	mix edeliver upgrade --auto-version=commit-count+git-revision --skip-git-clean
+	mix edeliver upgrade --auto-version=commit-count+git-revision #--skip-git-clean
