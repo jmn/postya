@@ -3,7 +3,7 @@ current_dir: "/home/deploy/apps/phx/current"
 releases_to_keep: 10
 database_username: phx
 
-secret-key-base: !vault |
+secret_key_base: !vault |
           $ANSIBLE_VAULT;1.1;AES256
           35396532333265616438613036346231613164356633636532393264613631333530346435363061
           3338336536653564316261303536663639653132336561390a333930356363343730393632366665
