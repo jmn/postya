@@ -5,15 +5,15 @@
   vars:
     mix_env: prod
     local_release_dir: "{{ local_build_dir }}/_build/{{ mix_env }}/rel/phx"
-    build_version: "{{ lookup('file', local_build_dir + '/_build/{{ mix_env }}/rel/phx/BUILD_VERSION') }}"
-    commit_hash: "{{ lookup('file', local_build_dir + '/_build/{{ mix_env }}/rel/phx/COMMIT_HASH') }}"
+#    build_version: "{{ lookup('file', local_build_dir + '/_build/{{ mix_env }}/rel/phx/BUILD_VERSION') }}"
+#    commit_hash: "{{ lookup('file', local_build_dir + '/_build/{{ mix_env }}/rel/phx/COMMIT_HASH') }}"
 
-  pre_tasks:
-    - name: Get git version
-      delegate_to: localhost
-      become: false
-      shell: "git rev-parse master {{ local_build_dir }}"
-      register: git_version_result
+#  pre_tasks:
+#    - name: Get git version
+#      delegate_to: localhost
+#      become: false
+#      shell: "git rev-parse master {{ local_build_dir }}"
+#      register: git_version_result
 
 #    - name: Check for newest build
 #      delegate_to: localhost
