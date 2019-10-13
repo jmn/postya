@@ -17,3 +17,5 @@ restart:
 
 upgrade:
 	mix edeliver upgrade --auto-version=commit-count+git-revision #--skip-git-clean
+secret:
+	ansible-vault encrypt_string --vault-password-file ".ansible/.vault_pass.txt" --stdin-name "$name"
