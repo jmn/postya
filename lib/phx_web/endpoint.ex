@@ -7,6 +7,13 @@ defmodule PhxWeb.Endpoint do
   # measures pipeline exec times
   plug Phx.PipelineInstrumenter
 
+  plug Plug.Session,
+    store: :cookie,
+    key: "_phx_key",
+    signing_salt: "secret"
+
+  plug Pow.Plug.Session, otp_app: :phx
+
   if Mix.env() == :prod do
     plug Phx.Plugs.WWWRedirect
     plug(:canonical_host)

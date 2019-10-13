@@ -10,6 +10,15 @@ use Mix.Config
 config :phx,
   ecto_repos: [Phx.Repo]
 
+# pow
+config :phx, :pow,
+  user: Phx.Users.User,
+  repo: Phx.Repo,
+  extensions: [PowResetPassword, PowEmailConfirmation],
+  controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
+  mailer_backend: PhxWeb.PowMailer,
+  web_module: PhxWeb
+
 # Configures the endpoint
 config :phx, PhxWeb.Endpoint,
   url: [host: "localhost"],

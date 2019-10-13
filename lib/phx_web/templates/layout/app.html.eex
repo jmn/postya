@@ -22,6 +22,13 @@
         <nav role="navigation">
           <ul>
             <li><a href="/posts">Posts</a></li>
+            <%= if Pow.Plug.current_user(@conn) do %>
+              <li><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></li>
+            <% else %>
+            
+              <li><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
+              <li><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
+            <% end %>
           </ul>
         </nav>
         <a href="/" class="phx-logo">

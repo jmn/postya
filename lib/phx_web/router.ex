@@ -1,5 +1,7 @@
 defmodule PhxWeb.Router do
   use PhxWeb, :router
+  use Pow.Phoenix.Router
+  use Pow.Extension.Phoenix.Router, otp_app: :phx
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -15,17 +17,32 @@ defmodule PhxWeb.Router do
   end
 
   # Our pipeline implements "maybe" authenticated. We'll use the `:ensure_auth` below for when we need to make sure someone is logged in.
-  pipeline :auth do
-    plug Phx.UserManager.Pipeline
-  end
+#  pipeline :auth do
+#    plug Phx.UserManager.Pipeline
+#  end
 
   # We use ensure_auth to fail if there is no one logged in
-  pipeline :ensure_auth do
-    plug Guardian.Plug.EnsureAuthenticated
+#  pipeline :ensure_auth do
+#    plug Guardian.Plug.EnsureAuthenticated
+#  end
+
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
+  pipeline :admin do
+    plug PhxWeb.EnsureRolePlug, :admin
+  end
+
+  scope "/" do
+    pipe_through [:browser]
+    pow_routes()
+    pow_extension_routes()
   end
 
   scope "/", PhxWeb do
-    pipe_through [:browser, :auth, :ensure_auth]
+    pipe_through [:browser, :admin]
 
     get "/posts/new", PostController, :new
     post "/posts/new", PostController, :create
@@ -36,20 +53,20 @@ defmodule PhxWeb.Router do
   end
 
   scope "/", PhxWeb do
-    pipe_through [:browser, :auth]
+    pipe_through [:browser]
 
     live "/", CounterLive, session: [:user_id]
     resources "/fd_feeds", FDFeedController
-    get "/login", SessionController, :new
-    post "/login", SessionController, :login
-    get "/logout", SessionController, :logout
+#    get "/login", SessionController, :new
+#    post "/login", SessionController, :login
+#    get "/logout", SessionController, :logout
     get "/posts/:id", PostController, :show
     get "/posts", PostController, :index
     resources "/chat", ChatController
   end
 
   scope "/e" do
-    pipe_through [:browser, :auth, :ensure_auth]
+    pipe_through [:browser, :protected]
     live "/", MarkdownLiveWeb.MarkdownLive
   end
 
