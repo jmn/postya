@@ -43,5 +43,5 @@ jobs:
           name: "Deploy master to production"
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              cd .ansible && ansible-playbook -i apps/production/inventory-ci apps/production/deploy.yml -vvvv;
+              cd .ansible && ansible-playbook -i apps/production/inventory-ci apps/production/deploy.yml -vvvvv;
             fi
