@@ -15,8 +15,8 @@ defmodule Phx.Users.User do
   def changeset(user_or_changeset, attrs) do
     user_or_changeset
     |> pow_changeset(attrs)
-    |> pow_extension_changeset(attrs)
     |> changeset_role(attrs)
+    |> pow_extension_changeset(attrs)
   end
 
   def changeset_role(user_or_changeset, attrs) do
