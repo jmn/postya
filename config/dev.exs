@@ -10,6 +10,7 @@ use Mix.Config
 # Configure your database
 config :phx, :pow,
   mailer_backend: PhxWeb.PowDebugMailer
+
 config :phx, Phx.Repo,
   #  url: database_url
   username: "postgres",
