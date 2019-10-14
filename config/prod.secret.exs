@@ -23,8 +23,7 @@ config :phx, Phx.Repo,
 
 config :phx, PhxWeb.Endpoint,
   http: [:inet6, port: String.to_integer(System.get_env("PORT") || "4000")],
-  #  secret_key_base: secret_key_base
-  secret_key_base: "foobar201jalskdjasdfhhpo83fhohohgih",
+  secret_key_base: "lrGVMuOV2P9KDTF9g+4TibcUbLIrIVTgydtkTZVXAH5w7aek0tYoVmBr4Hfilk1L",
   server: true
 
 # ## Using releases (Elixir v1.9+)
