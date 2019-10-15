@@ -97,3 +97,7 @@ config :prometheus, Phx.PipelineInstrumenter,
   ],
   registry: :default,
   duration_unit: :microseconds
+
+config :kernel,
+  inet_dist_listen_min: 9001,
+  inet_dist_listen_max: 9001
