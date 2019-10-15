@@ -33,14 +33,14 @@ RUN asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git && \
 
 # Install erlang
 RUN asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git && \
-    asdf install erlang 22.0.2 && \
-    asdf global erlang 22.0.2 && \
+    asdf install erlang 22.1.3 && \
+    asdf global erlang 22.1.3 && \
     rm -rf  /tmp/*
 
 # Install elixir
 RUN asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git && \
-    asdf install elixir 1.9.0 && \
-    asdf global elixir 1.9.0 && \
+    asdf install elixir 1.9.2-otp-22 && \
+    asdf global elixir 1.9.2-otp-22 && \
     rm -rf  /tmp/*
 
 # Install hex and rebar
