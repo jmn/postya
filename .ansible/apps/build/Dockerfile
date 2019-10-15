@@ -18,7 +18,7 @@ RUN apt-get update && \
                     python-virtualenv \
                     git \
                     nodejs \
-                    automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev unzip && \
+                    automake autoconf libreadline-dev libncurses-dev libssl-dev libyaml-dev libxslt-dev libffi-dev libtool unixodbc-dev unzip wx-common libwxbase3.0-dev libwxgtk3.0-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Install asdf
