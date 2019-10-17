@@ -56,7 +56,7 @@ defmodule Pow.Phoenix.Mailer.Mail do
     web_module   = Config.get(config, :web_mailer_module)
     Logger.debug("WEB_MODULE: #{inspect web_module}")
     view_assigns = Keyword.merge([conn: conn, user: user], assigns)
-    Logger.debug("VIEW_ASSIGNS: #{inspect view_assigns}")
+    Logger.debug("VIEW_ASSIGNS")
     view_module  = ViewHelpers.build_view_module(view_module, web_module)
     Logger.debug("VIEW_MODULE: #{inspect view_module}")
 
