@@ -1,25 +1,10 @@
 # Phx
 ## To build and deploy
 Change the version in `mix.exs`.
-Old releases are located in `~/.deliver/releases/`.
+- `make build`
 
-
-- `mix edeliver build release production`
-- `mix edeliver deploy release to production`
-
-## hot-code upgrade
-- `mix edeliver build upgrade --with=0.0.1`
-- `mix edeliver deploy upgrade to production`
-
-## To start the release if it's not running
-- `mix edeliver start production`
-otherwise,
-- `mix edeliver restart production`
-
-## To perform database migrations on prod:
-- `mix edeliver migrate production`
-
-- `mix edeliver show migrations on production` shows pending database migrations
+## To deploy to production
+- `make deploy`
 
 ## To get a remote console on the production system
 SSH to it and run:
