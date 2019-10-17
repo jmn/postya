@@ -50,18 +50,12 @@ defmodule Pow.Phoenix.Mailer.Mail do
   """
   @spec new(Conn.t(), map(), {module(), atom()}, Keyword.t()) :: t()
   def new(conn, user, {view_module, template}, assigns) do
-    Logger.debug("MAILER NEW")
     config       = Plug.fetch_config(conn)
-    Logger.debug("CONFIG")
     web_module   = Config.get(config, :web_mailer_module)
-    Logger.debug("WEB_MODULE")
     view_assigns = Keyword.merge([conn: conn, user: user], assigns)
-    Logger.debug("VIEW_ASSIGNS")
     view_module  = ViewHelpers.build_view_module(view_module, web_module)
-    Logger.debug("VIEW_MODULE")
 
-    #subject = render_subject(view_module, template, view_assigns)
-    subject = "subject: hello"
+    subject = render_subject(view_module, template, view_assigns)
     Logger.debug("SUBJECT")
     text    = render(view_module, template, conn, view_assigns, :text)
     Logger.debug("TEXT")
