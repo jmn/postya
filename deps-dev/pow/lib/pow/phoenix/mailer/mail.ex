@@ -60,7 +60,8 @@ defmodule Pow.Phoenix.Mailer.Mail do
     view_module  = ViewHelpers.build_view_module(view_module, web_module)
     Logger.debug("VIEW_MODULE: #{inspect view_module}")
 
-    subject = render_subject(view_module, template, view_assigns)
+    #subject = render_subject(view_module, template, view_assigns)
+    subject = "subject: hello"
     Logger.debug("SUBJECT: #{inspect subject}")
     text    = render(view_module, template, conn, view_assigns, :text)
     Logger.debug("TEXT: #{inspect text}")
