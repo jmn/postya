@@ -52,13 +52,20 @@ defmodule Pow.Phoenix.Mailer.Mail do
   def new(conn, user, {view_module, template}, assigns) do
     Logger.debug("MAILER NEW")
     config       = Plug.fetch_config(conn)
+    Logger.debug("CONFIG: #{inspect config}")
     web_module   = Config.get(config, :web_mailer_module)
+    Logger.debug("WEB_MODULE: #{inspect web_module}")
     view_assigns = Keyword.merge([conn: conn, user: user], assigns)
+    Logger.debug("VIEW_ASSIGNS: #{inspect view_assigns}")
     view_module  = ViewHelpers.build_view_module(view_module, web_module)
+    Logger.debug("VIEW_MODULE: #{inspect view_module}")
 
     subject = render_subject(view_module, template, view_assigns)
+    Logger.debug("SUBJECT: #{inspect subject}")
     text    = render(view_module, template, conn, view_assigns, :text)
+    Logger.debug("TEXT: #{inspect text}")
     html    = render(view_module, template, conn, view_assigns, :html)
+    Logger.debug("HTML: #{inspect html}")
 
     struct(__MODULE__, user: user, subject: subject, text: text, html: html, assigns: assigns)
   end

@@ -107,7 +107,7 @@ defmodule PowEmailConfirmation.Phoenix.ControllerCallbacks do
     unconfirmed_user  = %{user | email: user.unconfirmed_email || user.email}
     Logger.debug("UNCONFIRMED_USER: #{inspect unconfirmed_user}")
     email             = Mailer.email_confirmation(conn, unconfirmed_user, url)
-    Logger.debug("email: #{inspect email}")
+    Logger.debug("EMAIL GENERATED")
 
     Pow.Phoenix.Mailer.deliver(conn, email)
   end
