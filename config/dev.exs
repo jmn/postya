@@ -9,7 +9,12 @@ use Mix.Config
 
 # Configure your database
 config :phx, :pow,
-  mailer_backend: PhxWeb.PowDebugMailer
+  user: Phx.Users.User,
+  repo: Phx.Repo,
+  extensions: [PowEmailConfirmation, PowResetPassword],
+  controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
+  mailer_backend: PhxWeb.PowDebugMailer,
+  web_module: PhxWeb
 
 config :phx, Phx.Repo,
   #  url: database_url

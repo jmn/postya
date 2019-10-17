@@ -59,6 +59,7 @@ defmodule PowEmailConfirmation.Phoenix.ControllerCallbacks do
   end
 
   defp halt_and_send_confirmation_email(conn, return_path) do
+    Logger.debug("HALTING AND SENDING CONFIRMATION EMAIL")
     user        = Plug.current_user(conn)
     {:ok, conn} = Plug.clear_authenticated_user(conn)
     error       = extension_messages(conn).email_confirmation_required(conn)
@@ -100,9 +101,13 @@ defmodule PowEmailConfirmation.Phoenix.ControllerCallbacks do
   @spec send_confirmation_email(map(), Conn.t()) :: any()
   def send_confirmation_email(user, conn) do
     Logger.debug("SENDING CONFIRMATION EMAIL")
+
     url               = confirmation_url(conn, user.email_confirmation_token)
+    Logger.debug("URL: #{inspect url}")
     unconfirmed_user  = %{user | email: user.unconfirmed_email || user.email}
+    Logger.debug("UNCONFIRMED_USER: #{inspect unconfirmed_user}")
     email             = Mailer.email_confirmation(conn, unconfirmed_user, url)
+    Logger.debug("email: #{inspect email}")
 
     Pow.Phoenix.Mailer.deliver(conn, email)
   end

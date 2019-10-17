@@ -5,6 +5,7 @@ defmodule PowEmailConfirmation.Plug do
   alias Plug.Conn
   alias Pow.Plug
   alias PowEmailConfirmation.Ecto.Context
+  require Logger
 
   @doc """
   Check if the there is a pending email change for the current user.
@@ -23,6 +24,7 @@ defmodule PowEmailConfirmation.Plug do
   """
   @spec email_unconfirmed?(Conn.t()) :: boolean()
   def email_unconfirmed?(conn) do
+    Logger.debug("CHECKING IF EMAIL IS UNCONFIRMED")
     config = Plug.fetch_config(conn)
 
     conn
