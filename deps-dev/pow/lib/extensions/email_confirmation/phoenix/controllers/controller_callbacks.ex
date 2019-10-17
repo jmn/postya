@@ -103,11 +103,10 @@ defmodule PowEmailConfirmation.Phoenix.ControllerCallbacks do
     Logger.debug("SENDING CONFIRMATION EMAIL")
 
     url               = confirmation_url(conn, user.email_confirmation_token)
-    unconfirmed_user  = %{user | email: user.unconfirmed_email || user.email}
-    email             = Mailer.email_confirmation(conn, unconfirmed_user, url)
-
     Logger.debug("URL: #{inspect url}")
+    unconfirmed_user  = %{user | email: user.unconfirmed_email || user.email}
     Logger.debug("UNCONFIRMED_USER: #{inspect unconfirmed_user}")
+    email             = Mailer.email_confirmation(conn, unconfirmed_user, url)
     Logger.debug("email: #{inspect email}")
 
     Pow.Phoenix.Mailer.deliver(conn, email)
