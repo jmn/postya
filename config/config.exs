@@ -10,15 +10,6 @@ use Mix.Config
 config :phx,
   ecto_repos: [Phx.Repo]
 
-# pow
-config :phx, :pow,
-  user: Phx.Users.User,
-  repo: Phx.Repo,
-  extensions: [PowEmailConfirmation, PowResetPassword],
-  controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
-  mailer_backend: PhxWeb.PowMailer,
-  web_module: PhxWeb
-
 # Configures the endpoint
 config :phx, PhxWeb.Endpoint,
   url: [host: "localhost"],
@@ -28,7 +19,6 @@ config :phx, PhxWeb.Endpoint,
   live_view: [
     signing_salt: "6nt6/L3OuKLZ1zA1QXXU3LCk7xEk94pM"
   ],
-  instrumenters: [Appsignal.Phoenix.Instrumenter],
   version: Mix.Project.config[:version]
 
 # Configures Elixir's Logger
@@ -42,12 +32,6 @@ config :phx, Phx.UserManager.Guardian,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
-
-config :appsignal, :config,
-  active: true,
-  name: "Phx",
-  push_api_key: "03cb3eeb-a289-48e3-8860-75d3176a3f74",
-  env: Mix.env()
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
