@@ -81,6 +81,7 @@ defmodule PowEmailConfirmation.Phoenix.ControllerCallbacks do
   defp warn_unconfirmed(conn, user), do: {:ok, user, conn}
 
   defp warn_and_send_confirmation_email(conn) do
+    Logger.debug("WARNING USER ABOUT UNCONFIRMED EMAIL")
     user  = Plug.current_user(conn)
     error = extension_messages(conn).email_confirmation_required_for_update(conn)
     conn  = Phoenix.Controller.put_flash(conn, :error, error)
