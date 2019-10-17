@@ -7,6 +7,7 @@ defmodule PhxWeb.PowMailer do
   require Logger
 
   def cast(%{user: user, subject: subject, text: text, html: html}) do
+    Logger.debug("EMAIL CAST")
     %Swoosh.Email{}
     |> to({"", user.email})
     |> from({"Postya.net", "noreply@postya.net"})

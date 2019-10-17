@@ -36,6 +36,7 @@ defmodule Pow.Phoenix.Mailer.Mail do
   """
   alias Plug.Conn
   alias Pow.{Config, Phoenix.ViewHelpers, Plug}
+  require Logger
 
   @type t :: %__MODULE__{}
 
@@ -49,6 +50,7 @@ defmodule Pow.Phoenix.Mailer.Mail do
   """
   @spec new(Conn.t(), map(), {module(), atom()}, Keyword.t()) :: t()
   def new(conn, user, {view_module, template}, assigns) do
+    Logger.debug("MAILER NEW")
     config       = Plug.fetch_config(conn)
     web_module   = Config.get(config, :web_mailer_module)
     view_assigns = Keyword.merge([conn: conn, user: user], assigns)
