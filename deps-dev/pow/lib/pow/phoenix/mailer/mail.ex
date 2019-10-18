@@ -55,6 +55,7 @@ defmodule Pow.Phoenix.Mailer.Mail do
     view_assigns = Keyword.merge([conn: conn, user: user], assigns)
     view_module  = ViewHelpers.build_view_module(view_module, web_module)
     raise render_subject(view_module, template, view_assigns)
+    subject = render_subject(view_module, template, view_assigns)
     Logger.debug("SUBJECT")
     text    = "TEXT" #render(view_module, template, conn, view_assigns, :text)
     Logger.debug("TEXT")
