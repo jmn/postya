@@ -53,8 +53,8 @@ defmodule PowEmailConfirmation.Phoenix.ControllerCallbacks do
 
   defp halt_unconfirmed(conn, success_response, return_path) do
     case PowEmailConfirmationPlug.email_unconfirmed?(conn) do
-      true  -> halt_and_send_confirmation_email(conn, return_path)
-      false -> success_response
+      true  -> raise halt_and_send_confirmation_email(conn, return_path)
+      false -> raise success_response
     end
   end
 
