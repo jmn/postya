@@ -6,6 +6,7 @@ defmodule PowEmailConfirmation.Phoenix.Mailer do
 
   @spec email_confirmation(Conn.t(), map(), binary()) :: Mail.t()
   def email_confirmation(conn, user, url) do
+    Mail.new(%{email: "test@example.com"}, {MailerView, :mail_test}, value: "test")
     Mail.new(conn, user, {MailerView, :email_confirmation}, url: url)
   end
 end
