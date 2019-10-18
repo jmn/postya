@@ -53,7 +53,7 @@ defmodule Pow.Phoenix.Mailer.Mail do
     config       = Plug.fetch_config(conn)
     web_module   = Config.get(config, :web_mailer_module)
     view_assigns = Keyword.merge([conn: conn, user: user], assigns)
-    view_module  = ViewHelpers.build_view_module(view_module, web_module)
+    view_module  = nil #ViewHelpers.build_view_module(view_module, web_module)
 
     subject = render_subject(view_module, template, view_assigns)
     Logger.debug("SUBJECT")
