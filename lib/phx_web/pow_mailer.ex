@@ -19,6 +19,7 @@ defmodule PhxWeb.PowMailer do
   def process(email) do
     Logger.debug("E-mail sent: #{inspect email}")
     email
+    |> raise
     |> deliver()
     |> log_warnings()
   end
