@@ -57,9 +57,9 @@ defmodule Pow.Phoenix.Mailer.Mail do
 
     subject = render_subject(view_module, template, view_assigns)
     Logger.debug("SUBJECT")
-    text    = render(view_module, template, conn, view_assigns, :text)
+    text    = "TEXT" #render(view_module, template, conn, view_assigns, :text)
     Logger.debug("TEXT")
-    html    = render(view_module, template, conn, view_assigns, :html)
+    html    = "HTML" #render(view_module, template, conn, view_assigns, :html)
     Logger.debug("HTML")
 
     struct(__MODULE__, user: user, subject: subject, text: text, html: html, assigns: assigns)
