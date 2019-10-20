@@ -33,10 +33,6 @@ config :phx, Phx.UserManager.Guardian,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-# Import environment specific config. This must remain at the bottom
-# of this file so it overrides the configuration defined above.
-import_config "#{Mix.env()}.exs"
-
 config :prometheus, Phx.PhoenixInstrumenter,
   controller_call_labels: [:controller, :action],
   duration_buckets: [
@@ -85,3 +81,7 @@ config :prometheus, Phx.PipelineInstrumenter,
 config :kernel,
   inet_dist_listen_min: 9001,
   inet_dist_listen_max: 9001
+
+# Import environment specific config. This must remain at the bottom
+# of this file so it overrides the configuration defined above.
+import_config "#{Mix.env()}.exs"
