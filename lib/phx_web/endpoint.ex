@@ -15,8 +15,8 @@ defmodule PhxWeb.Endpoint do
   plug Pow.Plug.Session, otp_app: :phx
 
   if Mix.env() == :prod do
-    plug Phx.Plugs.WWWRedirect
-    plug(:canonical_host)
+    #plug Phx.Plugs.WWWRedirect
+    #plug(:canonical_host)
   end
 
   defp canonical_host(conn, _opts) do
