@@ -61,7 +61,7 @@ defmodule Phx.MixProject do
       {:ecto_autoslug_field, "~> 2.0"},
       {:plug_canonical_host, "~> 1.0"},
       {:observer_cli, "~> 1.5"},
-      {:appsignal, "~> 1.0"},
+#      {:appsignal, "~> 1.0"},
       {:prometheus_ex, "~> 3.0.5"},
       # {:prometheus_ecto, "~> 1.4.1"},
       {:prometheus_phoenix, "~> 1.3.0"},

@@ -26,6 +26,19 @@ config :phx, PhxWeb.Endpoint,
   secret_key_base: "lrGVMuOV2P9KDTF9g+4TibcUbLIrIVTgydtkTZVXAH5w7aek0tYoVmBr4Hfilk1L",
   server: true
 
+config :phx, PhxWeb.PowMailer,
+  adapter: Swoosh.Adapters.Sendgrid,
+  api_key: "{{ sendgrid_api_key }}"
+
+config :phx, :pow,
+  user: Phx.Users.User,
+  repo: Phx.Repo,
+  extensions: [PowEmailConfirmation, PowResetPassword],
+  controller_callbacks: Pow.Extension.Phoenix.ControllerCallbacks,
+  mailer_backend: PhxWeb.PowMailer,
+  web_module: PhxWeb
+
+
 # ## Using releases (Elixir v1.9+)
 #
 # If you are doing OTP releases, you need to instruct Phoenix

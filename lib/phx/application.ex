@@ -7,13 +7,13 @@ defmodule Phx.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
-    require Prometheus.Registry
+    #require Prometheus.Registry
 
-    Phx.PhoenixInstrumenter.setup()
-    Phx.PipelineInstrumenter.setup()
+    #Phx.PhoenixInstrumenter.setup()
+    #Phx.PipelineInstrumenter.setup()
     # Phx.RepoInstrumenter.setup()
-    Prometheus.Registry.register_collector(:prometheus_process_collector)
-    Phx.PrometheusExporter.setup()
+    #Prometheus.Registry.register_collector(:prometheus_process_collector)
+    #Phx.PrometheusExporter.setup()
 
     children = [
       # Start the Ecto repository
@@ -31,7 +31,7 @@ defmodule Phx.Application do
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Phx.Supervisor]
-    {:ok, _} = Application.ensure_all_started(:appsignal)
+    # {:ok, _} = Application.ensure_all_started(:appsignal)
     Supervisor.start_link(children, opts)
   end
 
