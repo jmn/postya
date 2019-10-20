@@ -1,11 +1,11 @@
 defmodule PhxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phx
-  #use Appsignal.Phoenix
+  use Appsignal.Phoenix
 
   # makes the /metrics URL happen
-  # plug Phx.PrometheusExporter
+   plug Phx.PrometheusExporter
   # measures pipeline exec times
-  # plug Phx.PipelineInstrumenter
+   plug Phx.PipelineInstrumenter
 
   plug Plug.Session,
     store: :cookie,

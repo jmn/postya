@@ -7,13 +7,13 @@ defmodule Phx.Application do
 
   def start(_type, _args) do
     # List all child processes to be supervised
-    #require Prometheus.Registry
+    require Prometheus.Registry
 
-    #Phx.PhoenixInstrumenter.setup()
-    #Phx.PipelineInstrumenter.setup()
+    Phx.PhoenixInstrumenter.setup()
+    Phx.PipelineInstrumenter.setup()
     # Phx.RepoInstrumenter.setup()
-    #Prometheus.Registry.register_collector(:prometheus_process_collector)
-    #Phx.PrometheusExporter.setup()
+    Prometheus.Registry.register_collector(:prometheus_process_collector)
+    Phx.PrometheusExporter.setup()
 
     children = [
       # Start the Ecto repository
