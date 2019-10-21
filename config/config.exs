@@ -19,7 +19,11 @@ config :phx, PhxWeb.Endpoint,
   live_view: [
     signing_salt: "6nt6/L3OuKLZ1zA1QXXU3LCk7xEk94pM"
   ],
-  version: Mix.Project.config[:version]
+  version: Mix.Project.config[:version],
+  http: [
+    compress: true,
+    protocol_options: [max_keepalive: 5_000_000]
+  ],
 
 # Configures Elixir's Logger
 config :logger, :console,
