@@ -23,7 +23,7 @@ config :phx, PhxWeb.Endpoint,
   http: [
     compress: true,
     protocol_options: [max_keepalive: 5_000_000]
-  ],
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
