@@ -2,7 +2,7 @@ defmodule Phx.Users.User do
   use Ecto.Schema
   use Pow.Ecto.Schema
   use Pow.Extension.Ecto.Schema,
-    extensions: [PowEmailConfirmation, PowResetPassword]
+    extensions: [PowEmailConfirmation, PowResetPassword, PowPersistentSession]
 
   schema "users" do
     field :role, :string, default: "user"

@@ -13,6 +13,7 @@ defmodule PhxWeb.Endpoint do
     signing_salt: "secret"
 
   plug Pow.Plug.Session, otp_app: :phx
+  plug PowPersistentSession.Plug.Cookie
 
   if Mix.env() == :prod do
     plug Phx.Plugs.WWWRedirect
