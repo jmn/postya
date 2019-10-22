@@ -69,7 +69,7 @@ defmodule Phx.MixProject do
       {:prometheus_process_collector, "~> 1.4.5"},
       {:hackney, "~> 1.15.2"},
       {:swoosh, "~> 0.23"},
-      {:pow, "~> 1.0.13"},
+      {:pow, github: "danschultzer/pow"},
     ]
   end
 
