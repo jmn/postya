@@ -4,14 +4,14 @@
     path: "{{ current_dir }}"
   register: current_dir_stat
 
-- name: Check for existing release directory
-  stat:
-    path: "{{ releases_dir }}/{{ build_version }}"
-  register: release_dir_stat
+#- name: Check for existing release directory
+#  stat:
+#    path: "{{ releases_dir }}/{{ build_version }}"
+#  register: release_dir_stat
 
-- name: Copy previous release (make faster release deploys)
-  command: "cp -r -L {{ current_dir }}/ {{ releases_dir }}/{{ build_version }}"
-  when: current_dir_stat.stat.exists and not release_dir_stat.stat.exists
+#- name: Copy previous release (make faster release deploys)
+#  command: "cp -r -L {{ current_dir }}/ {{ releases_dir }}/{{ build_version }}"
+#  when: current_dir_stat.stat.exists and not release_dir_stat.stat.exists
 
 - name: "Upload new {{ build_version }} release"
   synchronize:
