@@ -19,7 +19,7 @@ config :phx, :pow,
 config :phx, Phx.Repo,
   #  url: database_url
   username: "postgres",
-  password: "aoeuaoeu",
+  password: "postgres",
   database: "phx_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,

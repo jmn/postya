@@ -1,6 +1,5 @@
 defmodule PhxWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phx
-  use Appsignal.Phoenix
 
   # makes the /metrics URL happen
    plug Phx.PrometheusExporter
