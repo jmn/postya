@@ -15,9 +15,9 @@ jobs:
     steps:
       - checkout
 
-#      - restore_cache:
-#          keys:
-#            - deps-build
+      - restore_cache:
+          keys:
+            - deps-build
 
       # Test
       - run: mix deps.get
@@ -30,11 +30,11 @@ jobs:
       - run: echo "$VAULT_PASS" | base64 -d > ~/repo/.ansible/.vault_pass.txt
       - run: cd .ansible && ansible-playbook -i apps/build/inventory-ci apps/build/build.yml -vvv
 
-      # - save_cache:
-      #    key: deps-build
-      #    paths:
-      #      - ~/repo/_build
-      #      - ~/repo/deps
+       - save_cache:
+          key: deps-build
+          paths:
+            - ~/repo/_build
+            - ~/repo/deps
 
       # Install rsync for deploy
       - run: apt-get install rsync -y
