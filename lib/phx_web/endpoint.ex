@@ -1,4 +1,5 @@
 defmodule PhxWeb.Endpoint do
+
   use Phoenix.Endpoint, otp_app: :phx
 
   # makes the /metrics URL happen
