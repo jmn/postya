@@ -2,6 +2,16 @@
 - name: Load production vars
   include_vars: "{{ production_vars_file }}"
 
+- name: "mix clean"
+  command: bash -lc "mix clean" chdir="{{ build_dir }}"
+  environment:
+    MIX_ENV: "{{ mix_env }}"
+
+- name: "mix deps.clean"
+  command: bash -lc "mix deps.clean --all" chdir="{{ build_dir}}"
+  environment:
+    MIX_ENV: "{{ mix_env }}"
+
 - name: Create secrets
   template:
     src: prod.secret.exs.j2
@@ -32,16 +42,6 @@
   file:
     name: "{{ build_dir }}/_build/{{ mix_env }}/rel/{{ app_name }}"
     state: absent
-
-- name: "mix clean"
-  command: bash -lc "mix clean" chdir="{{ build_dir }}"
-  environment:
-    MIX_ENV: "{{ mix_env }}"
-
-#- name: "mix deps.clean"
-#  command: bash -lc "mix deps.clean --all" chdir="{{ build_dir}}"
-#  environment:
-#    MIX_ENV: "{{ mix_env }}"
 
 - name: "Releasing {{ build_version }}"
   command: bash -lc "mix release" chdir="{{ build_dir }}"
