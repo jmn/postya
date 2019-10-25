@@ -34,12 +34,12 @@
     state: absent
 
 - name: "mix clean"
-  command: bash -lc "mix clean chdir="{{ build_dir }}"
+  command: bash -lc "mix clean" chdir="{{ build_dir }}"
   environment:
     MIX_ENV: "{{ mix_env }}"
 
 - name: "mix deps.clean"
-  command: "bash -lc "mix deps.clean chdir="{{ build_dir}}"
+  command: bash -lc "mix deps.clean" chdir="{{ build_dir}}"
   environment:
     MIX_ENV: "{{ mix_env }}"
 
