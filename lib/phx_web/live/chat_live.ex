@@ -14,7 +14,7 @@ defmodule PhxWeb.ChatLive do
     # Referencing parent assigns:
     # https://github.com/phoenixframework/phoenix_live_view/blob/c7ea73ba9223e2cf285fb970cd9090f92183ed80/lib/phoenix_live_view.ex#L610
     username = if user do
-      user.username
+      user.email
     else
       "Anonymous"
     end

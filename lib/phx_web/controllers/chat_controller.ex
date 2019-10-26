@@ -1,5 +1,6 @@
 defmodule PhxWeb.ChatController do
   use PhxWeb, :controller
+  import Pow.Plug
   alias Phoenix.LiveView
 
   alias PhxWeb.ChatLive
@@ -12,11 +13,12 @@ defmodule PhxWeb.ChatController do
 
   def show(conn, %{"id" => chat_id}) do
     chat = chat_id
+    user = Pow.Plug.current_user(conn)
 
     LiveView.Controller.live_render(
       conn,
       ChatLive,
-      session: %{chat: chat, user: Guardian.Plug.current_resource(conn)}
+      session: %{chat: chat, user: user}
     )
   end
 end
