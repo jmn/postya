@@ -4,11 +4,11 @@ defmodule PhxWeb.EnsureRolePlug do
 
   ## Example
 
-      plug MyAppWeb.EnsureRolePlug, [:user, :admin]
+      plug PhxWeb.EnsureRolePlug, [:user, :admin]
 
-      plug MyAppWeb.EnsureRolePlug, :admin
+      plug PhxWeb.EnsureRolePlug, :admin
 
-      plug MyAppWeb.EnsureRolePlug, ~w(user admin)a
+      plug PhxWeb.EnsureRolePlug, ~w(user admin)a
   """
   import Plug.Conn, only: [halt: 1]
 
@@ -22,7 +22,7 @@ defmodule PhxWeb.EnsureRolePlug do
   def init(config), do: config
 
   @doc false
-  @spec call(Conn.t(), atom()) :: Conn.t()
+  @spec call(Conn.t(), atom() | binary() | [atom()] | [binary()]) :: Conn.t()
   def call(conn, roles) do
     conn
     |> Plug.current_user()
@@ -40,7 +40,7 @@ defmodule PhxWeb.EnsureRolePlug do
   defp maybe_halt(_any, conn) do
     conn
     |> Controller.put_flash(:error, "Unauthorized access")
-    |> Controller.redirect(to: Routes.pow_session_path(conn, :new))
+    |> Controller.redirect(to: Routes.post_path(conn, :index))
     |> halt()
   end
 end
