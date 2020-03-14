@@ -15,8 +15,6 @@ import "phoenix_html"
 import { Socket } from "phoenix"
 import LiveSocket from "phoenix_live_view"
 
-let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks})
-liveSocket.connect()
 
 
 // Import local files
@@ -44,3 +42,6 @@ Hooks.ScrollToTop = {
     }
 }
 
+
+let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks})
+liveSocket.connect()
