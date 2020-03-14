@@ -10,7 +10,8 @@ jobs:
 
     environment:
       MIX_ENV: test
-
+      POSTGRES_PASSWORD: postgres
+      
     working_directory: ~/repo
     steps:
       - checkout
