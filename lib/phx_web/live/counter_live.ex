@@ -9,7 +9,7 @@ defmodule PhxWeb.CounterLive do
 
     if metadata == 0 do
       %{entries: entries, metadata: metadata} =
-        Phx.Repo.paginate(query, cursor_fields: [:id], sort_direction: :desc, limit: 5)
+        Phx.Repo.paginate(query, cursor_fields: [:id], sort_direction: :desc, limit: 1)
 
       {entries, metadata}
     else
@@ -19,7 +19,7 @@ defmodule PhxWeb.CounterLive do
             before: metadata.before,
             cursor_fields: [:id, :desc],
             sort_direction: :desc,
-            limit: 5
+            limit: 1
           )
 
         {entries, metadata}
@@ -29,7 +29,7 @@ defmodule PhxWeb.CounterLive do
             after: metadata.after,
             cursor_fields: [:id, :desc],
             sort_direction: :desc,
-            limit: 5
+            limit: 1
           )
 
         {entries, metadata}
@@ -41,12 +41,6 @@ defmodule PhxWeb.CounterLive do
     ~L"""
     <div class="posts">
       <div>
-        <h1>Page: <%= @val %></h1>
-        <button phx-click="dec">-</button>
-        <button phx-click="inc">+</button>
-      </div>
-
-      <div>
           <%= for post <- @feedposts do %>
             <h3><%=  post.title %> (<%=  post.id %>)</h3>
         <div>
@@ -56,9 +50,9 @@ defmodule PhxWeb.CounterLive do
 
       </div>
 
-      <div>
-        <button phx-click="dec">-</button>
-        <button phx-click="inc">+</button>
+      <div style="position: fixed; right: 20px; bottom: 20px;">
+        <button phx-click="dec" phx-hook="ScrollToTop">-</button>
+        <button phx-click="inc" phx-hook="ScrollToTop">+</button>
       </div>
     </div>
     """

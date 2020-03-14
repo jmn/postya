@@ -15,8 +15,9 @@ import "phoenix_html"
 import { Socket } from "phoenix"
 import LiveSocket from "phoenix_live_view"
 
-let liveSocket = new LiveSocket("/live", Socket)
+let liveSocket = new LiveSocket("/live", Socket, {hooks: Hooks})
 liveSocket.connect()
+
 
 // Import local files
 //
@@ -33,3 +34,13 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("darkMode", event.currentTarget.checked)
     })
 })
+
+let Hooks = {}
+Hooks.ScrollToTop = {
+    mounted() {
+	this.el.addEventListener("click", e => {
+	    window.scrollTo(0, 0);
+	})
+    }
+}
+
