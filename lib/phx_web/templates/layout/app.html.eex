@@ -75,6 +75,7 @@
       <a href="/"><li>Frontpage</li></a>
       <a href="/posts"><li>Posts</li></a>
       <%= if Pow.Plug.current_user(@conn) do %>
+      <a href="/fd_feeds"><li>Manage Feeds</li></a>
       <li><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></li>
       <% else %>
       <li><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
