@@ -91,7 +91,7 @@ defmodule PhxWeb.CounterLive do
     {:noreply, turn(socket, key)}
   end
   
-  defp turn(socket, "ArrowRight"), do
+  defp turn(socket, "ArrowRight") do
     next = Agent.get(Storage, fn state -> state end)
     {entries, metadata} = feedposts(next, back = false)
     Agent.update(Storage, fn state -> metadata end)
@@ -100,7 +100,7 @@ defmodule PhxWeb.CounterLive do
     {:noreply, update(socket, :val, &(&1 + 1))}
   end
   
-  defp turn(socket, "ArrowLeft"), do
+  defp turn(socket, "ArrowLeft") do
     next = Agent.get(Storage, fn state -> state end)
     {entries, metadata} = feedposts(next, back = false)
     Agent.update(Storage, fn state -> metadata end)
