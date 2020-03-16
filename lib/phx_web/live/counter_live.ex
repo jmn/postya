@@ -39,7 +39,7 @@ defmodule PhxWeb.CounterLive do
 
   def render(assigns) do
     ~L"""
-    <div class="posts">
+    <div class="posts" phx-keydown="keydown" phx-target="window">
       <div>
           <%= for post <- @feedposts do %>
             <h3><%=  post.title %> (<%=  post.id %>)</h3>
@@ -86,4 +86,28 @@ defmodule PhxWeb.CounterLive do
     # FIXME: Ensure val can never be set below 0.
     {:noreply, update(socket, :val, &(&1 - 1))}
   end
+  
+  def handle_event("keydown", key, socket) do
+    {:noreply, turn(socket, key)}
+  end
+  
+  defp turn(socket, "ArrowRight"), do
+    next = Agent.get(Storage, fn state -> state end)
+    {entries, metadata} = feedposts(next, back = false)
+    Agent.update(Storage, fn state -> metadata end)
+
+    socket = assign(socket, :feedposts, entries)
+    {:noreply, update(socket, :val, &(&1 + 1))}
+  end
+  
+  defp turn(socket, "ArrowLeft"), do
+    next = Agent.get(Storage, fn state -> state end)
+    {entries, metadata} = feedposts(next, back = false)
+    Agent.update(Storage, fn state -> metadata end)
+
+    socket = assign(socket, :feedposts, entries)
+    {:noreply, update(socket, :val, &(&1 - 1))}
+  end
+    
+  defp turn(socket, _), do: socket
 end
