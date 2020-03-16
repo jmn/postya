@@ -21,7 +21,6 @@ body {
     font-size: 1.6em;
     font-weight: 300;
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 blockquote {
@@ -886,7 +885,7 @@ code {
  #menuToggle
  {
    display: block;
-   position: relative;
+   position: absolute;
    top: 10px;
    left: 30px;
    
