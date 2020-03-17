@@ -39,7 +39,7 @@ defmodule PhxWeb.CounterLive do
 
   def render(assigns) do
     ~L"""
-    <div class="posts" phx-keydown="keydown" phx-target="window">
+    <div class="posts" phx-window-keydown="keydown">
       <div>
           <%= for post <- @feedposts do %>
             <h3><%=  post.title %> (<%=  post.id %>)</h3>
