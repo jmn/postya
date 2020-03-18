@@ -7,7 +7,8 @@
 # General application configuration
 use Mix.Config
 
-config :phx, :pow, ecto_repos: [Phx.Repo]
+config :phx,
+  ecto_repos: [Phx.Repo]
 
 # Configures the endpoint
 config :phx, PhxWeb.Endpoint,
