@@ -6,10 +6,10 @@ defmodule PhxWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
-    plug Phoenix.LiveView.Flash
+    plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :put_live_layout, {PhxWeb.LayoutView, :app}
   end
 
   pipeline :api do
@@ -19,6 +19,11 @@ defmodule PhxWeb.Router do
   pipeline :admin do
     plug PhxWeb.EnsureRolePlug, :admin
   end
+
+  # pipeline :protected do
+  #   plug Pow.Plug.RequireAuthenticated,
+  #     error_handler: Pow.Phoenix.PlugErrorHandler
+  # end
 
   scope "/" do
     pipe_through [:browser]
@@ -39,7 +44,7 @@ defmodule PhxWeb.Router do
   scope "/", PhxWeb do
     pipe_through [:browser]
 
-    live "/", CounterLive, session: [:user_id]
+    live "/", CounterLive, session: %{"user_id" => :user_id}
     resources "/fd_feeds", FDFeedController
     get "/posts/:id", PostController, :show
     get "/posts", PostController, :index

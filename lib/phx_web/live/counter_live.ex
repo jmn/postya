@@ -39,7 +39,7 @@ defmodule PhxWeb.CounterLive do
 
   def render(assigns) do
     ~L"""
-    <div class="posts" phx-window-keydown="keydown">
+    <div class="posts" phx-window-keyup="keydown">
       <div>
           <%= for post <- @feedposts do %>
             <h3><%=  post.title %> (<%=  post.id %>)</h3>
@@ -58,7 +58,7 @@ defmodule PhxWeb.CounterLive do
     """
   end
 
-  def mount(_session, socket) do
+  def mount(_params, _session, socket) do
     {entries, metadata} = feedposts(0, back = false)
 
     Agent.start_link(fn -> [0] end, name: Storage)
@@ -86,28 +86,28 @@ defmodule PhxWeb.CounterLive do
     # FIXME: Ensure val can never be set below 0.
     {:noreply, update(socket, :val, &(&1 - 1))}
   end
-  
+
   def handle_event("keydown", key, socket) do
-    {:noreply, turn(socket, key)}
+    {:noreply, turn(socket, key["code"])}
   end
-  
+
   defp turn(socket, "ArrowRight") do
     next = Agent.get(Storage, fn state -> state end)
     {entries, metadata} = feedposts(next, back = false)
     Agent.update(Storage, fn state -> metadata end)
 
     socket = assign(socket, :feedposts, entries)
-    {:noreply, update(socket, :val, &(&1 + 1))}
+    update(socket, :val, &(&1 + 1))
   end
-  
+
   defp turn(socket, "ArrowLeft") do
     next = Agent.get(Storage, fn state -> state end)
-    {entries, metadata} = feedposts(next, back = false)
+    {entries, metadata} = feedposts(next, back = true)
     Agent.update(Storage, fn state -> metadata end)
 
     socket = assign(socket, :feedposts, entries)
-    {:noreply, update(socket, :val, &(&1 - 1))}
+    update(socket, :val, &(&1 - 1))
   end
-    
+
   defp turn(socket, _), do: socket
 end
