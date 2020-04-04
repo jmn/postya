@@ -42,7 +42,7 @@ defmodule PhxWeb.CounterLive do
     <div class="posts" phx-window-keyup="keydown">
       <div>
           <%= for post <- @feedposts do %>
-            <h3><%=  post.title %> (<%=  post.id %>)</h3>
+            <h3><a href="<%=  post.url %>"><%=  post.title %></a></h3>
         <div>
           <%= Phoenix.HTML.raw HtmlSanitizeEx.basic_html(post.content) %>
         </div>
