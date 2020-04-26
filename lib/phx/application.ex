@@ -14,6 +14,7 @@ defmodule Phx.Application do
     # Phx.RepoInstrumenter.setup()
     Prometheus.Registry.register_collector(:prometheus_process_collector)
     Phx.PrometheusExporter.setup()
+    Phx.Metrics.setup()
 
     children = [
       # Start the Ecto repository

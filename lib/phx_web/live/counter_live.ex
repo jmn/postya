@@ -3,6 +3,7 @@ defmodule PhxWeb.CounterLive do
   use Agent
   require Logger
   require Ecto.Query
+  alias Phx.Metrics
 
   def feedposts(metadata, back) do
     query = Ecto.Query.from(p in FDFeedPost, order_by: [desc: p.id])
@@ -68,6 +69,7 @@ defmodule PhxWeb.CounterLive do
   end
 
   def handle_event("inc", _value, socket) do
+    Metrics.increment_page_turner()
     next = Agent.get(Storage, fn state -> state end)
     {entries, metadata} = feedposts(next, back = false)
     Agent.update(Storage, fn state -> metadata end)
