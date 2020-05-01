@@ -9,6 +9,8 @@
   <%= text_input f, :url %>
   <%= error_tag f, :url %>
 
+  <%= text_input f, :input1, name: "fd_feed[tags]", value: format_tags(@fd_feed.tags)  %>
+
   <div>
     <%= submit "Save" %>
   </div>

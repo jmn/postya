@@ -9,6 +9,11 @@ defmodule Phx.Metrics do
       help: "Counter for page turns"
     )
 
+    Gauge.declare(
+      name: :elixir_app_user_count,
+      help: "User count."
+    )
+
     # Our counter for the number of searches against a particular zipcode.
     # Given that there is a label 'geohash' each zip code gets its own counter.
     # Counter.new(
@@ -44,5 +49,9 @@ defmodule Phx.Metrics do
 
   def increment_page_turner() do
     Counter.inc(name: :elixir_app_page_turned)
+  end
+
+  def set_user_count(count) do
+    Gauge.set([name: :elixir_app_user_count], count)
   end
 end

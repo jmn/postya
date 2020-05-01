@@ -30,7 +30,7 @@ defmodule Phx.Feeds do
       FDFeed{}
 
   """
-  def get_fd_feed!(id), do: Repo.get!(FDFeed, id)
+  def get_fd_feed!(id), do: Repo.get!(FDFeed, id) |> Repo.preload(:tags)
 
   @doc """
   Creates a fd_feed.
