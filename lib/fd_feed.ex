@@ -8,14 +8,17 @@ defmodule FDFeed do
 
   schema "fd_feed" do
     field(:url, :string)
-
-    many_to_many :tags, Phx.Tag,
-      join_through: "fd_feed_tags",
+    has_many :feedposts, FDFeedPost
+    many_to_many :tags, FDTag,
+      join_through: FDFeedTags,
       on_replace: :delete
-
     timestamps()
   end
 
+  @spec changeset(
+          {map, map} | %{:__struct__ => atom | %{__changeset__: map}, optional(atom) => any},
+          %{optional(:__struct__) => none, optional(atom | binary) => any}
+        ) :: Ecto.Changeset.t()
   @doc false
   def changeset(feed, attrs) do
     feed
@@ -48,8 +51,8 @@ defmodule FDFeed do
         updated_at: timestamp
       })
 
-    Repo.insert_all Phx.Tag, maps, on_conflict: :nothing
-    Repo.all from t in Phx.Tag, where: t.name in ^names
+    Repo.insert_all FDTag, maps, on_conflict: :nothing
+    Repo.all from t in FDTag, where: t.name in ^names
   end
 
   def validate_url(changeset, field, options \\ []) do

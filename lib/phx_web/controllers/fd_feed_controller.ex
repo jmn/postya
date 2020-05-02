@@ -54,7 +54,12 @@ defmodule PhxWeb.FDFeedController do
 
   def delete(conn, %{"id" => id}) do
     fd_feed = Feeds.get_fd_feed!(id)
-    {:ok, _fd_feed} = Feeds.delete_fd_feed(fd_feed)
+
+    {:ok, _fd_feed} =
+      fd_feed
+      |> Ecto.Changeset.change()
+     # |> Ecto.Changeset.foreign_key_constraint(:tags_fd_feed_id)
+      |> Phx.Repo.delete()
 
     conn
     |> put_flash(:info, "Fd feed deleted successfully.")

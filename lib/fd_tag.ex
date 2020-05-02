@@ -1,9 +1,10 @@
-defmodule Phx.Tag do
+defmodule FDTag do
   use Ecto.Schema
 
-  schema "tags" do
+  schema "fd_tags" do
     field :name
     timestamps()
+    many_to_many :fd_feed, FDFeed, join_through: FDFeedTags
   end
 
   def parse(tags) do

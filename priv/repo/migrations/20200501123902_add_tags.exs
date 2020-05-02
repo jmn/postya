@@ -2,7 +2,7 @@ defmodule Phx.Repo.Migrations.AddTags do
   use Ecto.Migration
 
   def change do
-    alter table("fd_feed") do
+    alter table(:fd_feed) do
       timestamps default: "2016-01-01 00:00:01", null: false
     end
 

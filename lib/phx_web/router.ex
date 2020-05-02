@@ -43,12 +43,12 @@ defmodule PhxWeb.Router do
 
   scope "/", PhxWeb do
     pipe_through [:browser]
-
     live "/", CounterLive, session: %{"user_id" => :user_id}
     resources "/fd_feeds", FDFeedController
     get "/posts/:id", PostController, :show
     get "/posts", PostController, :index
     resources "/chat", ChatController
+    live "/:tag", CounterLive, session: %{"user_id" => :user_id}
   end
 
   scope "/e" do

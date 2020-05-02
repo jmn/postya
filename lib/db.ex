@@ -44,7 +44,6 @@ defmodule DB do
         content: content,
         date_acquired: datetime,
         date_published: datetime,
-        feed_id: feedsource_id
       },
       on_conflict: :nothing
     )

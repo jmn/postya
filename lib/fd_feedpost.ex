@@ -10,6 +10,6 @@ defmodule FDFeedPost do
     field(:content, :string)
     field(:date_acquired, :utc_datetime)
     field(:date_published, :utc_datetime)
-    field(:feed_id, :integer)
+    belongs_to :fd_feed, FDFeed
   end
 end
