@@ -7,7 +7,7 @@ defmodule Phx.Repo.Migrations.Delete do
 
     alter table(:fd_feed_tags) do
       modify(:fd_feed_id, references(:fd_feed, on_delete: :delete_all))
-      modify(:fd_tag_id, references(:fd_tags, on_delete: :delete_all), primary_key: true)
+      modify(:fd_tag_id, references(:fd_tags, on_delete: :delete_all))
     end
   end
 end
