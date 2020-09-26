@@ -43,14 +43,11 @@
     </header>
 
 
-      </div>
-      <form>
-      <input id="dark-mode" class="dark-mode-checkbox" type="checkbox">
+	    </div>
+      <input id="dark-mode" class="dark-mode-checkbox visually-hidden" type="checkbox">
       <label class="dark-mode-label" for="dark-mode">
         Dark mode
       </label>
-      <input id="foo" type="checkbox">
-      </form>
       //-->
 
         <nav role="navigation">
@@ -86,15 +83,6 @@
       <label class="dark-mode-label" for="dark-mode">
         Dark mode
       </label></li>
-      <li>
-        <div class="theme-switch-wrapper">
-          <label class="theme-switch" for="checkbox">
-            <input type="checkbox" id="checkbox" />
-            <div class="slider round"></div>
-          </label>
-          <em>Enable Dark Mode!</em>
-        </div>
-      </li>
     </ul>
   </div>
 </nav>
