@@ -20,31 +20,31 @@ import LiveSocket from "phoenix_live_view";
 // Local files can be imported directly using relative paths, for example:
 // import socket from "./socket"
 
-const toggleSwitch = document.querySelector(
-  '.theme-switch input[type="checkbox"]'
-);
-function switchTheme(e) {
-  if (e.target.checked) {
-    document.documentElement.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark");
-  } else {
-    document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light");
-  }
-}
+// const toggleSwitch = document.querySelector(
+//   '.theme-switch input[type="checkbox"]'
+// );
+// function switchTheme(e) {
+//   if (e.target.checked) {
+//     document.documentElement.setAttribute("data-theme", "dark");
+//     localStorage.setItem("theme", "dark");
+//   } else {
+//     document.documentElement.setAttribute("data-theme", "light");
+//     localStorage.setItem("theme", "light");
+//   }
+// }
 
-toggleSwitch.addEventListener("change", switchTheme, false);
-const currentTheme = localStorage.getItem("theme")
-  ? localStorage.getItem("theme")
-  : null;
+// toggleSwitch.addEventListener("change", switchTheme, false);
+// const currentTheme = localStorage.getItem("theme")
+//   ? localStorage.getItem("theme")
+//   : null;
 
-if (currentTheme) {
-  document.documentElement.setAttribute("data-theme", currentTheme);
+// if (currentTheme) {
+//   document.documentElement.setAttribute("data-theme", currentTheme);
 
-  if (currentTheme === "dark") {
-    toggleSwitch.checked = true;
-  }
-}
+//   if (currentTheme === "dark") {
+//     toggleSwitch.checked = true;
+//   }
+// }
 
 let Hooks = {};
 Hooks.ScrollToTop = {
