@@ -20,7 +20,7 @@ defmodule PhxWeb.Endpoint do
   plug PowPersistentSession.Plug.Cookie
 
   if Mix.env() == :prod do
-    plug Phx.Plugs.WWWRedirect
+    #plug Phx.Plugs.WWWRedirect
     plug(:canonical_host)
   end
 
