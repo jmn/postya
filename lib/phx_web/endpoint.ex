@@ -2,21 +2,25 @@ defmodule PhxWeb.Endpoint do
 
   use Phoenix.Endpoint, otp_app: :phx
 
+  @session_options [
+    store: :cookie,
+    key: "_phx_key",
+    signing_salt: "OB7Tbjj1"
+  ]
+
   # makes the /metrics URL happen
    plug Phx.PrometheusExporter
   # measures pipeline exec times
    plug Phx.PipelineInstrumenter
 
   plug Plug.Session,
-    store: :cookie,
-    key: "_phx_key",
-    signing_salt: "secret"
+    @session_options
 
   plug Pow.Plug.Session, otp_app: :phx
   plug PowPersistentSession.Plug.Cookie
 
   if Mix.env() == :prod do
-    plug Phx.Plugs.WWWRedirect
+    #plug Phx.Plugs.WWWRedirect
     plug(:canonical_host)
   end
 
@@ -33,7 +37,8 @@ defmodule PhxWeb.Endpoint do
     end
   end
 
-  socket "/live", Phoenix.LiveView.Socket
+  socket "/live", Phoenix.LiveView.Socket,
+    websocket: [connect_info: [session: @session_options]]
 
   socket "/socket", PhxWeb.UserSocket,
     websocket: true,
@@ -71,10 +76,8 @@ defmodule PhxWeb.Endpoint do
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_phx_key",
-    signing_salt: "OB7Tbjj1"
+
+  #plug Plug.Session, @session_options
 
   plug PhxWeb.Router
 end

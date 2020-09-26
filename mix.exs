@@ -4,7 +4,7 @@ defmodule Phx.MixProject do
   def project do
     [
       app: :phx,
-      version: System.get_env("BUILD_VERSION") || "0.1.5",
+      version: System.get_env("BUILD_VERSION") || "0.1.6",
       elixir: "~> 1.9",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
@@ -39,17 +39,17 @@ defmodule Phx.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.10"},
+      {:phoenix, "~> 1.4.16"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
-      {:phoenix_html, "~> 2.11"},
+      {:phoenix_html, "~> 2.14"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.3.0"},
+      {:phoenix_live_view, "~> 0.9.0"},
       {:floki, ">= 0.0.0", only: :test},
       {:httpoison, "~> 1.5"},
       {:progress_bar, "> 0.0.0"},
@@ -68,7 +68,7 @@ defmodule Phx.MixProject do
       {:prometheus_process_collector, "~> 1.4.5"},
       {:hackney, "~> 1.15.2"},
       {:swoosh, "~> 0.23"},
-      {:pow, github: "danschultzer/pow"},
+      {:pow, "~> 1.0.19"},
     ]
   end
 

@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>postya.net</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
-    <link rel="canonical" href="<%= PhxWeb.Router.Helpers.url(@conn) <> @conn.request_path %>">
+    <%= csrf_meta_tag() %>
   </head>
   <body>
+    <div class="theme-container grow">
 
 	  <div class="theme-container grow">
 
@@ -58,19 +59,17 @@
     A fake / hidden checkbox is used as click reciever,
     so you can use the :checked selector on it.
     -->
-    <input type="checkbox" />
-
-    <!--
+          <input type="checkbox" />
+          <!--
     Some spans to act as a hamburger.
 
     They are acting like a real hamburger,
     not that McDonalds stuff.
     -->
-    <span></span>
-    <span></span>
-    <span></span>
-
-    <!--
+          <span></span>
+          <span></span>
+          <span></span>
+          <!--
     Too bad the menu has to be inside of the button
     but hey, it's pure CSS magic.
     -->

@@ -44,7 +44,7 @@ defmodule DB do
         content: content,
         date_acquired: datetime,
         date_published: datetime,
-        feed_id: feedsource_id
+        fd_feed_id: feedsource_id
       },
       on_conflict: :nothing
     )
@@ -53,7 +53,7 @@ defmodule DB do
   def store_in_db(feedsource_id, entry, pid) do
     # {:ok, datetime, 0} = DateTime.from_iso8601(entry.updated)
     datetime = DateTime.utc_now()
-    Logger.info("Storing #{entry.url}")
+    Logger.info("Storing #{entry.url} - #{feedsource_id}")
 
     Postgrex.query!(pid, "INSERT INTO fd_feedpost (title, url, author, content, date_acquired,
       date_published, feed_id) VALUES ($1, $2, $3, $4, $5, $6, $7)

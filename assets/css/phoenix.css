@@ -15,7 +15,8 @@ html {
     box-sizing: border-box;
 }
 body {
-    color: #000000;
+    color: var(--font-color);
+    background-color: var(--bg-color);
     font-family: "Helvetica", "Arial", sans-serif;
     font-size: 1.6em;
     font-weight: 300;
@@ -372,7 +373,7 @@ input[type="radio"] {
     .row {
         flex-direction: row;
         margin-left: -1rem;
-        width: calc(100% + 2rem);
+        width: 100%;
     }
     .row .column {
         margin-bottom: inherit;
@@ -543,8 +544,8 @@ h6 {
 }
 @media only screen and (min-width: 961px) {
     .posts {
-        padding-left: 15em;
-        padding-right: 15em;
+        padding-left: 25%;
+        padding-right: 25%;
     }
 }
 
@@ -553,6 +554,7 @@ h6 {
     max-width: 120rem;
     padding: 0 2rem;
     position: relative;
+    margin-top: 0;
 }
 
 select {
@@ -760,61 +762,22 @@ hr {
     border-color: #9890e3;
 }
 
-/* DARK MODE STUFF FOLLOWS */
-
 :root {
-    /* Light theme */
-    --c-light-text: #333;
-    --c-light-background: #fff;
-    --c-light-focus: deepskyblue;
-    --c-light-interactive: mediumvioletred;
-
-    /* Dark theme */
-    --c-dark-text: #fff;
-    --c-dark-background: #000;
-    --c-dark-focus: deeppink;
-    --c-dark-interactive: palegreen;
+    --primary-color: #302AE6;
+    --secondary-color: #536390;
+    --font-color: #424242;
+    --bg-color: #fff;
+    --heading-color: #292922;
 }
 
-.theme-container {
-    /* Make the light theme the default */
-    --c-text: var(--c-light-text);
-    --c-background: var(--c-light-background);
-    --c-focus: var(--c-light-focus);
-    --c-interactive: var(--c-light-interactive);
-
-    color: var(--c-text);
-    background-color: var(--c-background);
+[data-theme="dark"] {
+    --primary-color: #9A97F3;
+    --secondary-color: #818cab;
+    --font-color: #e1e1ff;
+    --bg-color: #161625;
+    --heading-color: #818cab;
 }
 
-.dark-mode-checkbox:checked ~ .theme-container {
-    /* Override the default theme */
-    --c-text: var(--c-dark-text);
-    --c-background: var(--c-dark-background);
-    --c-focus: var(--c-dark-focus);
-    --c-interactive: var(--c-dark-interactive);
-}
-
-.dark-mode-label {
-    margin-bottom: 1em;
-}
-
-:focus,
-.dark-mode-checkbox:focus ~ .theme-container .dark-mode-label {
-    outline: 2px solid var(--c-focus);
-}
-
-/*
-* Replace original checkbox
-*/
-
-.dark-mode-label::before {
-    content: "\2610";
-}
-
-.dark-mode-checkbox:checked ~ .theme-container .dark-mode-label::before {
-    content: "\2611";
-}
 
 /*
 visibility-hidden utility class
@@ -922,9 +885,9 @@ code {
  #menuToggle
  {
    display: block;
-   position: relative;
-   top: 50px;
-   left: 50px;
+   position: absolute;
+   top: 10px;
+   left: 30px;
    
    z-index: 1;
    
@@ -945,25 +908,24 @@ code {
    color: tomato;
  }
  
- 
  #menuToggle input
  {
-   display: block;
-   width: 40px;
-   height: 32px;
-   position: absolute;
-   top: -7px;
-   left: -5px;
-   
-   cursor: pointer;
-   
-   opacity: 0; /* hide this */
-   z-index: 2; /* and place it over the hamburger */
-   
-   -webkit-touch-callout: none;
- }
- 
- /*
+     display: block;
+     width: 40px;
+     height: 32px;
+     position: absolute;
+     top: -7px;
+     left: -5px;
+     
+     cursor: pointer;
+     
+     opacity: 0; /* hide this */
+     z-index: 2; /* and place it over the hamburger */
+     
+     -webkit-touch-callout: none;
+    }
+    
+    /*
   * Just a quick hamburger
   */
  #menuToggle span
@@ -1060,3 +1022,70 @@ code {
  {
    transform: none;
  }
+
+ /* Dark mode toggle code follows */
+
+ /*Simple css to style it like a toggle switch*/
+.theme-switch-wrapper {
+    float: right;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+
+    em {
+      margin-left: 10px;
+      font-size: 1rem;
+    }
+  }
+  .theme-switch {
+    display: inline-block;
+    height: 34px;
+    position: relative;
+    width: 60px;
+  }
+  
+  .theme-switch input {
+    display:none;
+  }
+  
+  .slider {
+    background-color: #ccc;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    background-color: #fff;
+    bottom: 4px;
+    content: "";
+    height: 26px;
+    left: 4px;
+    position: absolute;
+    transition: .4s;
+    width: 26px;
+  }
+  
+  input:checked + .slider {
+    background-color: #66bb6a;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+  
