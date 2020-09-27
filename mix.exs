@@ -39,8 +39,8 @@ defmodule Phx.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.16"},
-      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix, "~> 1.5.3"},
+      {:phoenix_pubsub, "~> 2.0"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
@@ -49,7 +49,7 @@ defmodule Phx.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.9.0"},
+      {:phoenix_live_view, "~> 0.14.7"},
       {:floki, ">= 0.0.0", only: :test},
       {:httpoison, "~> 1.5"},
       {:progress_bar, "> 0.0.0"},
@@ -68,7 +68,7 @@ defmodule Phx.MixProject do
       {:prometheus_process_collector, "~> 1.4.5"},
       {:hackney, "~> 1.15.2"},
       {:swoosh, "~> 0.23"},
-      {:pow, "~> 1.0.19"},
+      {:pow, "~> 1.0.21"},
     ]
   end
 
