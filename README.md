@@ -1,4 +1,7 @@
 # Phx
+- Used to be www.postya.net
+- Now hosted on https://read.jmnorlund.net
+
 ## To build and deploy
 Change the version in `mix.exs`.
 - `make build`
