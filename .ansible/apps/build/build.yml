@@ -3,7 +3,7 @@
   gather_facts: no
   vars:
     local_build_dir: "/tmp/phx_build"
-    git_repo: "git@github.com:jmn/phx.git"
+    git_repo: "git@github.com:jmn/postya.git"
     production_vars_file: "../production/host_vars/i.jmnorlund.net"
 
   pre_tasks:
