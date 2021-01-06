@@ -2,6 +2,7 @@ defmodule PhxWeb.Router do
   use PhxWeb, :router
   use Pow.Phoenix.Router
   use Pow.Extension.Phoenix.Router, otp_app: :phx
+  import Phoenix.LiveDashboard.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -39,6 +40,7 @@ defmodule PhxWeb.Router do
     delete "/posts/:id", PostController, :delete
     get "/posts/:id/edit", PostController, :edit
     put "/posts/:id/edit", PostController, :update
+    live_dashboard "/stats", metrics: PhxWeb.Telemetry, ecto_repos: [Phx.Repo]
   end
 
   scope "/", PhxWeb do
@@ -48,7 +50,8 @@ defmodule PhxWeb.Router do
     get "/posts/:id", PostController, :show
     get "/posts", PostController, :index
     resources "/chat", ChatController
-    live "/:tag", CounterLive, session: %{"user_id" => :user_id}
+
+    live "/:tag", CounterLive, session: %{"user_id" => :user_id} # This needs to be last
   end
 
   scope "/e" do

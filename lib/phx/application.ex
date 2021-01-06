@@ -27,6 +27,9 @@ defmodule Phx.Application do
       # Start Phoenix PubSub
       {Phoenix.PubSub, [name: Phx.PubSub, adapter: Phoenix.PubSub.PG2]},
 
+      # Telemetry for /stats
+      PhxWeb.Telemetry,
+
       # Start the endpoint when the application starts
       PhxWeb.Endpoint
       # Starts a worker by calling: Phx.Worker.start_link(arg)
