@@ -15,7 +15,7 @@ config :phx, PhxWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "n9Y9czH1dwIJQeV0+XeLuoe3J2o5IemhzVZaUJ6rXEUVnn5URPmLPsASsC4IDhzf",
   render_errors: [view: PhxWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Phx.PubSub, adapter: Phoenix.PubSub.PG2],
+  pubsub_server: Phx.PubSub,
   live_view: [
     signing_salt: "6nt6/L3OuKLZ1zA1QXXU3LCk7xEk94pM"
   ],

@@ -20,7 +20,7 @@ defmodule PhxWeb.CounterLive do
 
     if metadata == 0 do
       %{entries: entries, metadata: metadata} =
-        Phx.Repo.paginate(query, cursor_fields: [:id], sort_direction: :desc, limit: 1)
+        Phx.Repo.paginate(query, cursor_fields: [:id, :desc], sort_direction: :desc, limit: 1)
 
       {entries, metadata}
     else
@@ -62,8 +62,8 @@ defmodule PhxWeb.CounterLive do
       </div>
 
       <div style="position: fixed; right: 20px; bottom: 20px;">
-        <button phx-click="dec" phx-hook="ScrollToTop">-</button>
-        <button phx-click="inc" phx-hook="ScrollToTop">+</button>
+        <button id="navleft" phx-click="dec" phx-hook="ScrollToTop" phx-window-keyup="keydown">-</button>
+        <button id="navright" phx-click="inc" phx-hook="ScrollToTop" phx-window-keyup="keydown">+</button>
       </div>
     </div>
     """
@@ -110,7 +110,7 @@ defmodule PhxWeb.CounterLive do
   end
 
   def handle_event("keydown", key, socket) do
-    {:noreply, turn(socket, key["code"])}
+    {:noreply, turn(socket, key["key"])}
   end
 
   defp turn(socket, "ArrowRight") do

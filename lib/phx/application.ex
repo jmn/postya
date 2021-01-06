@@ -16,12 +16,16 @@ defmodule Phx.Application do
     Phx.PrometheusExporter.setup()
     Phx.Metrics.setup()
 
+
     children = [
       # Start the Ecto repository
       Phx.Repo,
 
       # Concurrently download feeds
       Dl.Sched,
+
+      # Start Phoenix PubSub
+      {Phoenix.PubSub, [name: Phx.PubSub, adapter: Phoenix.PubSub.PG2]},
 
       # Start the endpoint when the application starts
       PhxWeb.Endpoint

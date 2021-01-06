@@ -12,7 +12,7 @@
     - name: Get git version
       delegate_to: localhost
       become: false
-      shell: "git rev-parse master {{ local_build_dir }}"
+      shell: "git rev-parse master -- {{ local_build_dir }}"
       register: git_version_result
 
     - name: Check for newest build

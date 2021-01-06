@@ -11,9 +11,48 @@
   <body>
     <div class="theme-container grow">
 
-      <nav role="navigation">
-        <div id="menuToggle">
-          <!--
+	  <div class="theme-container grow">
+
+<!--
+
+
+	    <div style="position:fixed; right: 20px; top:0;">
+	      <div>
+		<a href="/" class="phx-logo" >
+              <img src="<%= Routes.static_path(@conn, "/images/postya.png") %>" alt="Postya.net" height="80px" style="position:float; top:10px; right:30px;"/>
+            </a>
+
+	      </div>
+
+    <header>
+
+      <section class="container">
+        <nav role="navigation">
+          <ul>
+            <li><a href="/posts">Posts</a></li>
+            <%= if Pow.Plug.current_user(@conn) do %>
+              <li><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></li>
+            <% else %>
+
+              <li><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
+              <li><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </section>
+    </header>
+
+
+	    </div>
+      <input id="dark-mode" class="dark-mode-checkbox visually-hidden" type="checkbox">
+      <label class="dark-mode-label" for="dark-mode">
+        Dark mode
+      </label>
+      //-->
+
+        <nav role="navigation">
+  <div id="menuToggle">
+    <!--
     A fake / hidden checkbox is used as click reciever,
     so you can use the :checked selector on it.
     -->
@@ -31,45 +70,34 @@
     Too bad the menu has to be inside of the button
     but hey, it's pure CSS magic.
     -->
-          <ul id="menu">
-            <a href="/">
-              <li>Frontpage</li>
-            </a>
-            <a href="/posts">
-              <li>Posts</li>
-            </a>
-            <%= if @current_user && @current_user.role == "admin" do %>
-              <a href="/fd_feeds">
-                <li>Manage Feeds</li>
-              </a>
-            <% end %>
-            <%= if Pow.Plug.current_user(@conn) do %>
-              <li><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></li>
-            <% else %>
-              <li><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
-              <li><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
-            <% end %>
-            <label>Tags</label>
-            <ul>
-              <%= for tag <- get_tags() do %>
-                <li><a href="/<%= tag %>"><%= tag %></a></li>
-              <% end %>
-            </ul>
-          </ul>
-        </div>
-      </nav>
-      <main role="main" class="container">
-        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-        <%= render @view_module, @view_template, assigns %>
-      </main>
-      <div class="theme-switch-wrapper">
-        <label class="theme-switch" for="checkbox">
-          <input type="checkbox" id="checkbox" />
-          <div class="slider round"></div>
-        </label>
-      </div>
-      <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
-    </div>
+    <ul id="menu">
+      <a href="/"><li>Frontpage</li></a>
+      <a href="/posts"><li>Posts</li></a>
+      <%= if Pow.Plug.current_user(@conn) do %>
+      <li><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %></li>
+      <% else %>
+      <li><%= link "Register", to: Routes.pow_registration_path(@conn, :new) %></li>
+      <li><%= link "Sign in", to: Routes.pow_session_path(@conn, :new) %></li>
+      <% end %>
+      <li><input id="dark-mode" class="dark-mode-checkbox" type="checkbox">
+      <label class="dark-mode-label" for="dark-mode">
+        Dark mode
+      </label></li>
+    </ul>
+  </div>
+</nav>
+
+    <main role="main" class="container">
+      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+    <%= @inner_content %>
+    </main>
+
+
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+
+	  </div>
+
   </body>
 </html>

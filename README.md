@@ -5,8 +5,11 @@
 ## To build and deploy
 Change the version in `mix.exs`.
 - `make build`
+This app deploys from GitHub master branch via CircleCI.
 
-## To deploy to production
+## To build and deploy from local machine
+Change the version in `mix.exs`.
+- `make build` followed by:
 - `make deploy`
 
 ## To get a remote console on the production system

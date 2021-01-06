@@ -9,7 +9,7 @@ defmodule PhxWeb.Router do
     plug :fetch_live_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug :put_live_layout, {PhxWeb.LayoutView, :app}
+    plug :put_root_layout, {PhxWeb.LayoutView, :app}
   end
 
   pipeline :api do
