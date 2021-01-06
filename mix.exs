@@ -55,7 +55,7 @@ defmodule Phx.MixProject do
       {:progress_bar, "> 0.0.0"},
       {:elixir_feed_parser, "~> 0.0.1"},
       {:flow, "~> 0.14"},
-      {:html_sanitize_ex, "~> 1.3.0"},
+      {:html_sanitize_ex, "~> 1.4.1"},
       {:paginator, "~> 0.6"},
       {:earmark, "~> 1.3"},
       {:ecto_autoslug_field, "~> 2.0"},
