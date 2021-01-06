@@ -49,7 +49,7 @@ defmodule Phx.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:phoenix_live_view, "~> 0.14.7"},
+      {:phoenix_live_view, "~> 0.15.3"},
       {:floki, ">= 0.0.0", only: :test},
       {:httpoison, "~> 1.5"},
       {:progress_bar, "> 0.0.0"},
