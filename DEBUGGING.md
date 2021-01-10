@@ -17,3 +17,15 @@ fs = Phx.Repo.all(query) |> Enum.map((fn item -> {item.id, item.url} end))
 # Debug fetch
 Dl.download({1, "https://boingboing.net/feed"})
 ```
+
+## Debugging feeds
+```elixir
+
+import ElixirFeedParser
+import Dl
+feed_url = "https://www.lpalmieri.com/rss.xml"
+feed = Dl.download({1, feed_url})
+{:ok, _, body ,_  } = feed
+ElixirFeedParser.parse(body)
+
+```
