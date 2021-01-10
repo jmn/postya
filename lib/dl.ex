@@ -35,7 +35,7 @@ defmodule Dl do
   def handle_result(result) do
     case result do
       {:ok, feedsource_id, body, req_url} ->
-        feed = ElixirFeedParser.parse(body)
+        {:ok, feed} = ElixirFeedParser.parse(body)
 
         case feed do
           {:error, err} ->

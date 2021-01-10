@@ -1,6 +1,7 @@
 defmodule DB do
   require Logger
   require Ecto.Query
+  import Map
 
   def db() do
     uri = System.get_env("DATABASE_URL") |> URI.parse()
@@ -33,10 +34,10 @@ defmodule DB do
       if entry.content do
         entry.content
       else
-        if entry.summary do
+        if Map.has_key?(entry, :summary) do
           entry.summary
         else
-          if entry.description do
+          if Map.has_key?(entry, :description) do
             entry.description
           else
             "empty"
