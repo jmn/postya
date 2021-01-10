@@ -55,7 +55,7 @@ defmodule Phx.MixProject do
       {:floki, ">= 0.0.0", only: :test},
       {:httpoison, "~> 1.5"},
       {:progress_bar, "> 0.0.0"},
-      {:elixir_feed_parser, "~> 2.1.0"},
+      {:elixir_feed_parser, git: "https://github.com/jmn/elixir-feed-parser.git"},
       {:flow, "~> 1.1"},
       {:html_sanitize_ex, "~> 1.4.1"},
       {:paginator, "~> 1.0"},
