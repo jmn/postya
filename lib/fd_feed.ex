@@ -23,6 +23,7 @@ defmodule FDFeed do
   def changeset(feed, attrs) do
     feed
     |> cast(attrs, [:url])
+    |> update_change(:url, &String.trim/1)
     |> validate_required([:url])
     |> put_assoc(:tags, parse_tags(attrs))
   end
