@@ -33,7 +33,15 @@ defmodule DB do
       if entry.content do
         entry.content
       else
-        entry.summary
+        if entry.summary do
+          entry.summary
+        else
+          if entry.description do
+            entry.description
+          else
+            "empty"
+          end
+        end
       end
 
     Phx.Repo.insert(
