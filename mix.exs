@@ -48,7 +48,7 @@ defmodule Phx.MixProject do
       {:phoenix_html, "~> 2.14"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.18"},
-      {:jason, "~> 1.0"},
+      {:jason, "~> 1.1"},
       {:plug_cowboy, "~> 2.4"},
       {:phoenix_live_view, "~> 0.15"},
       {:phoenix_live_dashboard, "~> 0.4.0"},
@@ -73,6 +73,7 @@ defmodule Phx.MixProject do
       {:pow, "~> 1.0.21"},
       {:telemetry_poller, "~> 0.4"},
       {:telemetry_metrics, "~> 0.4"},
+      {:sentry, "~> 8.0"},
     ]
   end
 

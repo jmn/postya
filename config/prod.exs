@@ -18,7 +18,8 @@ config :phx, PhxWeb.Endpoint,
 # force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
 # Do not print debug messages in production
-config :logger, level: :warn
+config :logger, level: :warn,
+  backends: [:console, Sentry.LoggerBackend]
 
 # ## SSL Support
 #
@@ -54,6 +55,17 @@ config :logger, level: :warn
 #
 # Check `Plug.SSL` for all available options in `force_ssl`.
 config :phoenix, :serve_endpoints, true
+
+# Configure Sentry
+config :sentry,
+  dsn: "https://a2185f7511b2447e82970e55e3d3c2ca@o182094.ingest.sentry.io/5585149",
+  environment_name: :prod,
+  enable_source_code_context: true,
+  root_source_code_path: File.cwd!(),
+  tags: %{
+    env: "production"
+  },
+  included_environments: [:prod]
 
 # Finally import the config/prod.secret.exs which loads secrets
 # and configuration from environment variables.
