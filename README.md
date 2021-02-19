@@ -1,4 +1,4 @@
-# Phx
+# Postya
 - Used to be www.postya.net
 - Now hosted on https://read.jmnorlund.net
 
