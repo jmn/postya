@@ -1,0 +1,14 @@
+version: 2
+updates:
+- package-ecosystem: mix
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: floki
+    versions:
+    - 0.29.0
+  - dependency-name: earmark
+    versions:
+    - 1.4.13
